@@ -1,23 +1,17 @@
-@extends('layouts.app')
-
+@extends('admin.layout')
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
 
-                <div class="panel-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+    <!-- Page Content -->
+    <div id="page-wrapper">
+        <div class="container-fluid">
 
-                    You are logged in!
-                </div>
-            </div>
+
+
         </div>
+        <footer class="footer text-center">
+            2017 © Copyright Procurement | PSI Moz. By <a href="http://evidevi.com/">evidevi.com</a>.
+        </footer>
     </div>
-</div>
-@endsection
+    <!-- /#page-wrapper -->
+
+@endsection()

@@ -2,115 +2,125 @@
 
 @section('content')
 
+    <div class="content">
+        <div class="container wow fadeInUp delay-03s">
+            <div class="row">
+                <div class="logo text-center">
+                    <a href="{{route('login')}}"><img src="{{ asset('assets/img/logo.png') }}" alt="logo" width="250"></a>
+                    <h2>Procurement | PSI Moçambique</h2>
+                </div>
 
-    <!-- Banner -->
-    <section id="banner">
-        <div class="inner">
-            <h2>PSI MZ Procurement</h2>
-            <p>Another fine responsive<br />
-                site template freebie<br />
-                crafted by <a href="http://html5up.net">HTML5 UP</a>.</p>
-            <ul class="actions">
-                <li><a href="{{ route('registar-cod-confirmacao.create') }}" class="button special">Registar</a></li>
-            </ul>
+                <h2 class="subs-title text-center">Código de confirmação!!!</h2>
+                <div class="subcription-info text-center">
+                    <form class="subscribe_form" action="#" method="post">
+                        <input placeholder="                        _ _ _ _ _ _ _ _ _ _ " class="email text-left" id="codigo" name="codigo" type="text">
+                        <input class="subscribe" name="email" value="Confirmar" type="submit">
+                    </form>
+                    <p class="sub-p">We Promise to never span you.</p>
+                </div>
+            </div>
         </div>
-        <a href="#one" class="more scrolly">Mais</a>
-    </section>
-
-    <!-- One -->
-    <section id="one" class="wrapper style1 special">
-        <div class="inner">
-            <header class="major">
-                <h2>Arcu aliquet vel lobortis ata nisl<br />
-                    eget augue amet aliquet nisl cep donec</h2>
-                <p>Aliquam ut ex ut augue consectetur interdum. Donec amet imperdiet eleifend<br />
-                    fringilla tincidunt. Nullam dui leo Aenean mi ligula, rhoncus ullamcorper.</p>
-            </header>
-            <ul class="icons major">
-                <li><span class="icon fa-diamond major style1"><span class="label">Lorem</span></span></li>
-                <li><span class="icon fa-heart-o major style2"><span class="label">Ipsum</span></span></li>
-                <li><span class="icon fa-code major style3"><span class="label">Dolor</span></span></li>
-            </ul>
-        </div>
-    </section>
-
-    <!-- Two -->
-    <section id="two" class="wrapper alt style2">
-        <section class="spotlight">
-            <div class="image"><img src="images/pic01.jpg" alt="" /></div><div class="content">
-                <h2>Magna primis lobortis<br />
-                    sed ullamcorper</h2>
-                <p>Aliquam ut ex ut augue consectetur interdum. Donec hendrerit imperdiet. Mauris eleifend fringilla nullam aenean mi ligula.</p>
+<!--
+        <section>
+            <div class="container">
+                <div class="row bort text-center">
+                    <div class="social">
+                        <ul>
+                            <li>
+                                <a href=""><i class="fa fa-facebook"></i></a>
+                            </li>
+                            <li>
+                                <a href=""><i class="fa fa-twitter"></i></a>
+                            </li>
+                            <li>
+                                <a href=""><i class="fa fa-linkedin"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </section>
-        <section class="spotlight">
-            <div class="image"><img src="images/pic02.jpg" alt="" /></div><div class="content">
-                <h2>Tortor dolore feugiat<br />
-                    elementum magna</h2>
-                <p>Aliquam ut ex ut augue consectetur interdum. Donec hendrerit imperdiet. Mauris eleifend fringilla nullam aenean mi ligula.</p>
+        -->
+        <section id="about" class="section-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 text-center">
+                        <div class="about-title">
+                            <h2>About Us</h2>
+                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium </br>voluptatum deleniti atque corrupti quos dolores e</p>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-12 wow fadeInUp delay-02s">
+                            <div class="img">
+                                <i class="fa fa-refresh"></i>
+                            </div>
+                            <h3 class="abt-hd">Our process</h3>
+                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores</p>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-12 wow fadeInUp delay-04s">
+                            <div class="img">
+                                <i class="fa fa-eye"></i>
+                            </div>
+                            <h3 class="abt-hd">Our Vision</h3>
+                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores</p>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-12 wow fadeInUp delay-06s">
+                            <div class="img">
+                                <i class="fa fa-cogs"></i>
+                            </div>
+                            <h3 class="abt-hd">Our Approach</h3>
+                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores</p>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-12 wow fadeInUp delay-08s">
+                            <div class="img">
+                                <i class="fa fa-dot-circle-o"></i>
+                            </div>
+                            <h3 class="abt-hd">Our Objective</h3>
+                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
-        <section class="spotlight">
-            <div class="image"><img src="images/pic03.jpg" alt="" /></div><div class="content">
-                <h2>Augue eleifend aliquet<br />
-                    sed condimentum</h2>
-                <p>Aliquam ut ex ut augue consectetur interdum. Donec hendrerit imperdiet. Mauris eleifend fringilla nullam aenean mi ligula.</p>
+        <div id="contact-info">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="contact-title">
+                            <i class="fa fa-envelope"></i>
+                            <h2>Get in touch</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor <br>incididunt ut labore et dolore magna aliqua.</p>
+                        </div>
+                    </div>
+                    <div class="contact col-md-6 wow fadeIn delay-08s">
+                        <div class="col-md-10 col-md-offset-1">
+                            <div id="note"></div>
+                            <div id="sendmessage">Your message has been sent. Thank you!</div>
+                            <div id="errormessage"></div>
+                            <form action="" method="post" role="form" class="contactForm">
+                                <div class="form-group">
+                                    <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                                    <div class="validation"></div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                                    <div class="validation"></div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                                    <div class="validation"></div>
+                                </div>
+                                <div class="form-group">
+                                    <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+                                    <div class="validation"></div>
+                                </div>
+
+                                <div class="text-center"><button type="submit" class="contact-submit">Send Message</button></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </section>
-    </section>
-
-    <!-- Three -->
-    <section id="three" class="wrapper style3 special">
-        <div class="inner">
-            <header class="major">
-                <h2>Accumsan mus tortor nunc aliquet</h2>
-                <p>Aliquam ut ex ut augue consectetur interdum. Donec amet imperdiet eleifend<br />
-                    fringilla tincidunt. Nullam dui leo Aenean mi ligula, rhoncus ullamcorper.</p>
-            </header>
-            <ul class="features">
-                <li class="icon fa-paper-plane-o">
-                    <h3>Arcu accumsan</h3>
-                    <p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
-                </li>
-                <li class="icon fa-laptop">
-                    <h3>Ac Augue Eget</h3>
-                    <p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
-                </li>
-                <li class="icon fa-code">
-                    <h3>Mus Scelerisque</h3>
-                    <p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
-                </li>
-                <li class="icon fa-headphones">
-                    <h3>Mauris Imperdiet</h3>
-                    <p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
-                </li>
-                <li class="icon fa-heart-o">
-                    <h3>Aenean Primis</h3>
-                    <p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
-                </li>
-                <li class="icon fa-flag-o">
-                    <h3>Tortor Ut</h3>
-                    <p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
-                </li>
-            </ul>
         </div>
-    </section>
-
-    <!-- CTA -->
-    <section id="cta" class="wrapper style4">
-        <div class="inner">
-            <header>
-                <h2>Arcue ut vel commodo</h2>
-                <p>Aliquam ut ex ut augue consectetur interdum endrerit imperdiet amet eleifend fringilla.</p>
-            </header>
-            <ul class="actions vertical">
-                <li><a href="#" class="button fit special">Activate</a></li>
-                <li><a href="#" class="button fit">Learn More</a></li>
-            </ul>
-        </div>
-    </section>
-
-
-</div>
+    </div>
 
 @endsection
