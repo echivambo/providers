@@ -15,6 +15,8 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
 
     <link href="https://fonts.googleapis.com/css?family=PT+Serif" rel="stylesheet">
+
+    <script src="{{ asset('js/jquery-3.2.0.min.js') }}"></script>
 </head>
 
 <body>
@@ -26,7 +28,7 @@
     <div class="container">
         <div class="row bort">
 
-            <div class="copyright">
+            <div class="copyright col-md-12">
                2017 © Copyright Procurement | PSI Moz. By <a href="http://evidevi.com/">evidevi.com</a>
             </div>
 
@@ -34,6 +36,7 @@
     </div>
 </footer>
 <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+<script src="{{ asset('js/jquery-3.2.0.min.js') }}"></script>
 <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('assets/js/jquery.countdown.min.js') }}"></script>
 <script src="{{ asset('assets/js/wow.js') }}"></script>

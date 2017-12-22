@@ -10,8 +10,14 @@
             </li>
         </ul>
         <ul class="nav navbar-top-links navbar-right pull-right">
-            <li>
-                <a class="profile-pic" href="#"> <img src="../plugins/images/users/varun.jpg" alt="user-img" width="36" class="img-circle"><b class="hidden-xs">Steave</b> </a>
+            <li  class="dropdown" id="profile-messages" ><a title="" href="#" data-toggle="dropdown" data-target="#profile-messages" class="dropdown-toggle"><i class="icon icon-user"></i>  <span class="text">{{ Auth::user()->name }}</span><b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#"><i class="icon-user"></i> My Profile</a></li>
+                    <li class="divider"></li>
+                    <li class="divider"></li>
+                    <li><a href="{{ route('logout') }}">
+                            <i class="icon-key"></i> Log Out</a></li>
+                </ul>
             </li>
         </ul>
     </div>

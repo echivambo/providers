@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ConfController extends Controller
+class ProvidersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,7 @@ class ConfController extends Controller
      */
     public function index()
     {
-        //
+        return view('regProviders');
     }
 
     /**
@@ -23,7 +23,7 @@ class ConfController extends Controller
      */
     public function create()
     {
-        return view('confirmacao');
+        //
     }
 
     /**
@@ -34,7 +34,7 @@ class ConfController extends Controller
      */
     public function store(Request $request)
     {
-        return redirect(route('providers.store'));
+        //
     }
 
     /**

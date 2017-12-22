@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ConfController extends Controller
+class GerarCodController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,7 +23,7 @@ class ConfController extends Controller
      */
     public function create()
     {
-        return view('confirmacao');
+        return view('admin/gerarCodigo');
     }
 
     /**
@@ -34,7 +34,7 @@ class ConfController extends Controller
      */
     public function store(Request $request)
     {
-        return redirect(route('providers.store'));
+        //
     }
 
     /**

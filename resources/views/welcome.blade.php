@@ -12,8 +12,9 @@
 
                 <h2 class="subs-title text-center">Código de confirmação!!!</h2>
                 <div class="subcription-info text-center">
-                    <form class="subscribe_form" action="#" method="post">
-                        <input placeholder="                        _ _ _ _ _ _ _ _ _ _ " class="email text-left" id="codigo" name="codigo" type="text">
+                    <form class="subscribe_form" action="{{route('registar-cod-confirmacao.store')}}" method="post">
+                        {{ csrf_field() }}
+                        <input placeholder="                        _ _ _ _ _ _ _ _ _ _ " required class="email text-left" id="codigo" name="codigo" type="text">
                         <input class="subscribe" name="email" value="Confirmar" type="submit">
                     </form>
                     <p class="sub-p">We Promise to never span you.</p>

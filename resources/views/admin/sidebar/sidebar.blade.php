@@ -6,7 +6,7 @@
                 <a href="index.html" class="waves-effect"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i><span class="hide-menu">Painel</span></a>
             </li>
             <li>
-                <a href="profile.html" class="waves-effect"><i class="fa fa-user fa-fw" aria-hidden="true"></i><span class="hide-menu">Gerar Código</span></a>
+                <a href="{{route('gerar-codigo.create')}}" class="waves-effect"><i class="fa fa-user fa-fw" aria-hidden="true"></i><span class="hide-menu">Gerar Código</span></a>
             </li>
 
             <li>
