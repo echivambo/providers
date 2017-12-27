@@ -158,7 +158,8 @@
 
                            <br>
                            <div class="form-group">
-                               <button class="btn btn-success">Salvar</button>
+                               <input type="submit" class="btn btn-success">
+                               <!--<button class="btn btn-success">Salvar</button>-->
                            </div>
                        </div>
                      </form>
