@@ -24,12 +24,35 @@
                              <div class="accordion-content">
 
                                  <div class="form-group">
-                                     <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                                     <div class="validation"></div>
+                                     <div class="col-md-8">
+                                        <label>Nome da Empresa / Pessoa Singulars</label>
+                                         <input type="text" class="form-control form-control-line" id="nome_empresa" name="nome_empresa">
+                                     </div>
+                                     <div class="col-md-4">
+                                         <label>Anexar Alvará</label>
+                                         <input type="file" class="form-control form-control-line" id="alvara" name="alvara">
+                                     </div>
                                  </div>
+
                                  <div class="form-group">
-                                     <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
-                                     <div class="validation"></div>
+                                     <div class="col-md-8">
+                                     <label for="nuit">NUIT</label>
+                                         <input type="number" class="form-control form-control-line" name="nuit" id="nuit"> </div>
+                                 </div>
+
+                                 <div class="form-group">
+                                     <div class="col-md-8">
+                                     <label for="pessoa_contacto">Pessoa do Contacto</label>
+                                         <input type="text" class="form-control form-control-line" name="pessoa_contacto" id="pessoa_contacto"> </div>
+                                 </div>
+
+                                 <div class="form-group">
+                                     <div class="col-md-8">
+                                         <label>Ramo de Actividade</label>
+                                         <select name="ramo_atividade" id="ramo_atividade" class="form-control form-control-line">
+                                             <option value=""></option>
+                                         </select>
+                                     </div>
                                  </div>
 
                              </div>
@@ -38,24 +61,94 @@
                              <div class="accordion-content">
 
                                  <div class="form-group">
-                                     <label class="col-md-12">Full Name</label>
-                                     <div class="col-md-12">
-                                         <input type="text" placeholder="Johnathan Doe" class="form-control form-control-line"> </div>
-                                 </div>
-                                 <div class="form-group">
-                                     <label for="example-email" class="col-md-12">Email</label>
-                                     <div class="col-md-12">
-                                         <input type="email" placeholder="johnathan@admin.com" class="form-control form-control-line" name="example-email" id="example-email"> </div>
+                                     <div class="col-md-8">
+                                        <label>Endereço Físico da Empresa</label>
+                                         <input type="text" class="form-control form-control-line" name="endereco_fisico" id="endereco_fisico">
+                                     </div>
+                                     <div class="col-md-4">
+                                        <label>Número</label>
+                                         <input type="number" class="form-control form-control-line" name="end_numero" id="numero">
+                                     </div>
                                  </div>
 
+                                 <div class="form-group">
+                                     <div class="col-md-6">
+                                     <label>Bairro</label>
+                                         <input type="text" class="form-control form-control-line" name="bairro"> </div>
+                                     <div class="col-md-6">
+                                         <label>Cidade</label>
+                                         <input type="text" class="form-control form-control-line" name="cidade">
+                                     </div>
+                                 </div>
+
+                                 <div class="form-group">
+                                     <div class="col-md-6">
+                                         <label>Província</label>
+                                         <select name="provincia" id="provincia" class="form-control form-control-line">
+                                             <option value="">Selecione a Província</option>
+                                         </select>
+                                     </div>
+                                     <div class="col-md-6">
+                                        <label>País</label>
+                                         <select name="pais" id="pais" class="form-control form-control-line">
+                                             <option value="">Selecione o País</option>
+                                         </select>
+                                     </div>
+                                 </div>
+
+                                 <div class="form-group">
+                                     <div class="col-md-6">
+                                         <label>Telefone Fixo</label>
+                                         <input type="number" class="form-control form-control-line" name="telefone_fixo">
+                                     </div>
+                                     <div class="col-md-6">
+                                        <label>Faxa</label>
+                                         <input type="number" class="form-control form-control-line" name="fax">
+                                     </div>
+                                 </div>
+
+                                 <div class="form-group">
+                                     <div class="col-md-4">
+                                         <label>Celular</label>
+                                         <input type="number" class="form-control form-control-line" name="celular">
+                                     </div>
+                                     <div class="col-md-8">
+                                        <label>Email</label>
+                                         <input type="email" class="form-control form-control-line" name="email">
+                                     </div>
+                                 </div>
 
                              </div>
 
                              <h4 class="accordion-toggle">Dados Bancários</h4>
                              <div class="accordion-content">
-                                 <p>
-                                     Vivamus facilisisnibh scelerisque laoreet.
-                                 </p>
+                                 <div class="form-group">
+                                     <div class="col-md-6">
+                                         <label>Nome do Banco</label>
+                                         <input type="text" class="form-control form-control-line" name="nome_banco"> </div>
+                                     <div class="col-md-6">
+                                         <label>Número da Conta</label>
+                                         <input type="number" class="form-control form-control-line" name="numero_conta">
+                                     </div>
+                                 </div>
+
+                                 <div class="form-group">
+                                     <div class="col-md-4">
+                                         <label>NIB</label>
+                                         <input type="number" class="form-control form-control-line" name="nib"> </div>
+                                     <div class="col-md-8">
+                                         <label>Nome da Agência</label>
+                                         <input type="text" class="form-control form-control-line" name="nome_agencia">
+                                     </div>
+                                 </div>
+
+                                 <div class="form-group">
+                                     <div class="col-md-6">
+                                         <label>Bancária (Anexar documento assinado do banco)</label>
+                                         <input type="file" class="form-control form-control-line" name="bancaria">
+                                     </div>
+                                 </div>
+
                              </div>
                          </div>
 

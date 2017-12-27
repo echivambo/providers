@@ -25,5 +25,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/home', 'HomeController@index')->name('home');
     Route::resource('/admin/gerar-codigo', 'GerarCodController');
     Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
+    Route::post('gerar-codigo/validacao',   ['uses'=>'GerarCodController@gerarCod']);
 });
     Route::resource('/providers', 'ProvidersController');
