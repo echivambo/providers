@@ -35,7 +35,6 @@ class CreateProvidersTable extends Migration
             $table->integer('nib')->unique();
             $table->string('nome_agencia',60);
             $table->string('bancaria',255);
-            $table->integer('user_id');
             $table->boolean('status')->default(1);
             $table->timestamps();
         });

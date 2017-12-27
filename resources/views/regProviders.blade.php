@@ -16,7 +16,8 @@
             <div class="panel-heading">
                 <h3 class="box-title titulo text-center">FORMULÁRIO DE REGISTO DO FORNECEDOR</h3>
                  <div class="panel-body">
-                     <form class="form-horizontal form-material">
+                     <form class="form-horizontal form-material" action="{{route('providers.store')}}" method="post">
+                         {{ csrf_field() }}
 
                      <div class="col-md-offset-1 col-md-10">
                          <div class="accordion">
@@ -51,6 +52,7 @@
                                          <label>Ramo de Actividade</label>
                                          <select name="ramo_atividade" id="ramo_atividade" class="form-control form-control-line">
                                              <option value=""></option>
+                                             <option value="limpeza">Limpeza</option>
                                          </select>
                                      </div>
                                  </div>
@@ -86,12 +88,14 @@
                                          <label>Província</label>
                                          <select name="provincia" id="provincia" class="form-control form-control-line">
                                              <option value="">Selecione a Província</option>
+                                             <option value="Maputo">Maputo</option>
                                          </select>
                                      </div>
                                      <div class="col-md-6">
                                         <label>País</label>
                                          <select name="pais" id="pais" class="form-control form-control-line">
                                              <option value="">Selecione o País</option>
+                                             <option value="Moz">Moz</option>
                                          </select>
                                      </div>
                                  </div>
