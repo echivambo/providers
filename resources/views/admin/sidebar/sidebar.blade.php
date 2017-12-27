@@ -19,7 +19,7 @@
             </li>
             <ul class="sub-menu collapse" id="param">
                 <li>
-                    <a href="blank.html" class="waves-effect"><i class="fa fa-columns fa-fw" aria-hidden="true"></i><span class="hide-menu">Ramo de Atividade</span></a>
+                    <a href="{{route('ramo.index')}}" class="waves-effect"><i class="fa fa-columns fa-fw" aria-hidden="true"></i><span class="hide-menu">Ramo de Atividade</span></a>
                 </li>
                 <li>
                     <a href="{{route('users.index')}}" class="waves-effect"><i class="fa fa-user fa-fw" aria-hidden="true"></i><span class="hide-menu">Usuario</span></a>

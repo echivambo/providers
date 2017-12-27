@@ -26,6 +26,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('/admin/gerar-codigo', 'GerarCodController');
     Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
     Route::get('/viewsProviders', 'viewsProviders@index')->name('viewsProviders');
+    Route::resource('/ramo', 'ramoController');
 
     Route::post('gerar-codigo/validacao',   ['uses'=>'GerarCodController@gerarCod']);
     Route::resource('/users', 'UserController');
