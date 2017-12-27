@@ -2,10 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Provider;
 use Illuminate\Http\Request;
 
 class ProvidersController extends Controller
 {
+    private $provider;
+    public function __construct(Provider $provider)
+    {
+        $this->provider=$provider;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -34,7 +40,8 @@ class ProvidersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Provider::create($request->all());
+        return redirect()->route('providers.index')->with('message', 'Provedor salvo com sucesso!');
     }
 
     /**
