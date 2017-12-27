@@ -88,7 +88,7 @@ var_dump($this->gerCodigo);
             $this->gerCodigo->save();
 
             return response ()->json ( $this->gerCodigo );
-            return redirect()->back()->with('message', 'Código gerado com sucesso! "O código gerado foi enviado para o email enviado"');
+            //return redirect()->back()->with('message', 'Código gerado com sucesso! "O código gerado foi enviado para o email enviado"');
 
            /* $response = array(
                 'status'=>'success',

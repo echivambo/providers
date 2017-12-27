@@ -33,7 +33,7 @@
                             <div class="white-box">
                                 <h3 class="box-title">Lista de Códigos</h3>
                                 <div class="table-responsive">
-                                    <table class="table">
+                                    <table class="table display nowrap "  id="example" cellspacing="0" style="width: 100%">
                                         <thead>
                                         <tr>
                                             <th>#</th>
@@ -98,6 +98,18 @@
 
 
 
+    </script>
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable( {
+                "scrollY": 400,
+                "scrollX": true,
+                dom: 'Bfrtip',
+                buttons: [
+                    'csv', 'excel', 'pdf', 'print'
+                ]
+            } );
+        } );
     </script>
 
 @endsection()
