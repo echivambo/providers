@@ -25,6 +25,7 @@ class GerarCodController extends Controller
         $controle = DB::table('prov_cods')
             ->join('users', 'users.id', '=', 'prov_cods.user_id')
             ->select('prov_cods.*', 'users.name as user')
+            ->orderByRaw('prov_cods.id DESC')
             ->get();
 
         return view('admin/gerarCodigo', compact('controle'));
@@ -79,7 +80,6 @@ var_dump($this->gerCodigo);
     }
     public function gerarCod(Request $request)
     {
-        if($request->ajax()){
             $post = $request->all();
 
             $this->gerCodigo->email = $post['email'];
@@ -87,20 +87,15 @@ var_dump($this->gerCodigo);
             $this->gerCodigo->codigo = str_random(15);
             $this->gerCodigo->save();
 
-var_dump($this->gerCodigo);
+            return response ()->json ( $this->gerCodigo );
             return redirect()->back()->with('message', 'Código gerado com sucesso! "O código gerado foi enviado para o email enviado"');
 
-            $response = array(
+           /* $response = array(
                 'status'=>'success',
                 'msg'=>'Código gerado com sucesso! "O código gerado foi enviado para o email enviado'
             );
             return Response::json($response);
-
-           //return redirect()->route('gerar-codigo.index')->with('message', 'Código gerado com sucesso! "O código gerado foi enviado para o email enviado"');
-        }
-           // return redirect()->back()->with->with('message', 'Erro ao gerar código');
-
-
+            */
     }
 
     /**

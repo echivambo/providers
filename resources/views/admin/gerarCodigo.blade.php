@@ -66,7 +66,7 @@
             e.preventDefault();
             var email = $('#email').val();
             var user_id = $('#user_id').val();
-            var token = $('input[name="_token"]').val();
+            var token = $('input[name=_token]').val();
             var data = {
                 email:email,
                 user_id:user_id,
@@ -84,14 +84,20 @@
             });
 
             request.done(function (msg) {
+                alert('salvo');
+                $('#email').val('');
                 var response = JSON.parse(msg);
                 console.log(response.msg);
+
             });
 
             request.fail(function (jqXHR, textStatus) {
                 console.log("Erro ao gerar cogido" + textStatus);
             })
         })
+
+
+
     </script>
 
 @endsection()
