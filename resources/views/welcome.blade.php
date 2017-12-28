@@ -1,6 +1,13 @@
 @extends('layouts.pag')
 
 @section('content')
+    <style>
+        .email{
+            padding-right: 30%;
+            text-align: center;
+
+        }
+    </style>
 
     <div class="content">
         <div class="container wow fadeInUp delay-03s">
@@ -14,34 +21,18 @@
                 <div class="subcription-info text-center">
                     <form class="subscribe_form" action="{{route('registar-cod-confirmacao.store')}}" method="post">
                         {{ csrf_field() }}
-                        <input placeholder="                        _ _ _ _ _ _ _ _ _ _ " required class="email text-left" id="codigo" name="codigo" type="text">
+                        <input placeholder="_ _ _ _ _ _ _ _ _ _" required class="email" id="codigo" name="codigo" maxlength="15" type="text" value="{{ old('codigo') }}" >
                         <input class="subscribe" name="email" value="Confirmar" type="submit">
                     </form>
                     <p class="sub-p">We Promise to never span you.</p>
+
+                    @if(Session::has('message'))
+                        <div class="alert alert-danger text-center">{{ Session::get('message') }}</div>
+                    @endif
                 </div>
             </div>
         </div>
-<!--
-        <section>
-            <div class="container">
-                <div class="row bort text-center">
-                    <div class="social">
-                        <ul>
-                            <li>
-                                <a href=""><i class="fa fa-facebook"></i></a>
-                            </li>
-                            <li>
-                                <a href=""><i class="fa fa-twitter"></i></a>
-                            </li>
-                            <li>
-                                <a href=""><i class="fa fa-linkedin"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-        -->
+
         <section id="about" class="section-padding">
             <div class="container">
                 <div class="row">
@@ -123,5 +114,9 @@
             </div>
         </div>
     </div>
-
+    <script>
+        $('#codigo').click(function () {
+            $('.alert').hide();
+        })
+    </script>
 @endsection

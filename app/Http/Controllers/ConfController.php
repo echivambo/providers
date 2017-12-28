@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ConfController extends Controller
 {
@@ -34,7 +35,15 @@ class ConfController extends Controller
      */
     public function store(Request $request)
     {
-        return redirect(route('providers.store'));
+        $result = (int)DB::table('prov_cods')
+            ->where('codigo', $request->codigo)
+            ->where('status', '1')
+            ->count();
+
+        if ($result==1)
+            return redirect(route('providers.store'));
+        else
+            return redirect()->back()->with('message', 'Código inválido!');
     }
 
     /**
