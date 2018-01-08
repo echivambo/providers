@@ -27,11 +27,30 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/viewsProviders', 'viewsProviders@index')->name('viewsProviders');
     Route::resource('/ramo', 'ramoController');
 
-    Route::post('gerar-codigo/validacao',   ['uses'=>'GerarCodController@gerarCod']);
     Route::resource('/users', 'UserController');
 
     Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
+    Route::post('gerar-codigo/validacao',   ['uses'=>'GerarCodController@store']);
+//    Route::get('/gerar-codigo/get/all', 'GerarCodController@findAll');
+
+    //Preencher a tabela gerar código
+    Route::get('/gerar-codigo/get/all', function (){
+        if(Request::ajax()){
+            $data = DB::table('prov_cods')
+                ->join('users', 'users.id', '=', 'prov_cods.user_id')
+                ->select('prov_cods.*', 'users.name as user')
+                ->orderByRaw('prov_cods.id DESC')
+                ->get();
+
+            return Response::json($data);
+        }
+    });
 });
+    Route::post('provider/sava',   ['uses'=>'ProvidersController@store']);
     Route::resource('/providers', 'ProvidersController');
+    Route::resource('/mail', 'MailController');
+
+    Route::get('/print-provider', 'printProviderController@index')->name('print-provider');
 
 

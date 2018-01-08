@@ -88,7 +88,15 @@
                             <div id="note"></div>
                             <div id="sendmessage">Your message has been sent. Thank you!</div>
                             <div id="errormessage"></div>
-                            <form action="" method="post" role="form" class="contactForm">
+                            @if( isset($errors) && count($errors) > 0 )
+                                <div class="alert alert-danger">
+                                    @foreach($errors->all() as $error)
+                                        <p>{{$error}}</p>
+                                    @endforeach
+                                </div>
+                            @endif
+                            <form  action="{{route('mail.store')}}" method="post" role="form" class="contactForm">
+                                {{ csrf_field() }}
                                 <div class="form-group">
                                     <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
                                     <div class="validation"></div>

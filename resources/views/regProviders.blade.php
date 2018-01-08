@@ -10,13 +10,13 @@
         .accordion-content {display: none;}
         .accordion-toggle.active {color: #f6941e;}
     </style>
-
+    
     <div class="col-md-offset-2 col-md-8">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="box-title titulo text-center">FORMULÁRIO DE REGISTO DO FORNECEDOR</h3>
                  <div class="panel-body">
-                     <form class="form-horizontal form-material" action="{{route('providers.store')}}" method="post">
+                     <form class="form-horizontal form-material contactForm" action="{{route('providers.store')}}" method="post" >
                          {{ csrf_field() }}
 
                      <div class="col-md-offset-1 col-md-10">
@@ -178,5 +178,7 @@
                 $(this).toggleClass('active').siblings().removeClass('active');
             });
         });
+
+
     </script>
 @endsection()

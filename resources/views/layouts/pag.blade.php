@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="PT">
 
 <head>
     <meta charset="utf-8">
@@ -17,6 +17,7 @@
     <link href="https://fonts.googleapis.com/css?family=PT+Serif" rel="stylesheet">
 
     <script src="{{ asset('js/jquery-3.2.0.min.js') }}"></script>
+
 </head>
 
 <body>
@@ -24,7 +25,7 @@
 @yield('content')
 
 
-<footer class="footer">
+<footer class="footer" id="fodape">
     <div class="container">
         <div class="row bort">
 

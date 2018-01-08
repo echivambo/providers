@@ -10,7 +10,7 @@
             </li>
 
             <li>
-                <a href="{{route('viewsProviders')}}" class="waves-effect"><i class="fa fa-user fa-fw" aria-hidden="true"></i><span class="hide-menu">Providers</span></a>
+                <a href="{{route('providers.index')}}" class="waves-effect"><i class="fa fa-user fa-fw" aria-hidden="true"></i><span class="hide-menu">Providers</span></a>
             </li>
 
 

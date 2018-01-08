@@ -6,13 +6,12 @@ body {
     background: #463125 url('../img/back1.jpg') no-repeat center top;
     background-size: cover;
     background: #463125;
-	/*font-family: 'Open Sans', sans-serif;*/
 
     font-family: 'PT Serif', serif;
     font-size: 12pt;
 
     z-index: 1;
-    background-color: hsla(0,0%,0%,0.4);
+    /*background-color: hsla(0,0%,0%,0.4);*/
     background-blend-mode: overlay;
     background-repeat: no-repeat;
 

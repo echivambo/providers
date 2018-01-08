@@ -48,97 +48,26 @@ class GerarCodController extends Controller
      */
     public function store(Request $request)
     {
-       /* $gerCodigo = [
-            'email'=>$request->email,
-            'user_id'=>$request->user_id,
-            'codigo'=>str_random(15),
-        ];
-            ProvCod::create($gerCodigo);
-        */
-        if($request->ajax()){
-            $post = $request->all();
+        $post = $request->all();
 
-            $this->gerCodigo->email = $post['email'];
-            $this->gerCodigo->user_id = $post['user_id'];
-            $this->gerCodigo->codigo = str_random(15);
-            $this->gerCodigo->save();
+        $this->gerCodigo->email = $post['email'];
+        $this->gerCodigo->user_id = $post['user_id'];
+        $this->gerCodigo->codigo = str_random(15);
+        $this->gerCodigo->save();
 
-var_dump($this->gerCodigo);
-            return redirect()->back()->with('message', 'Código gerado com sucesso! "O código gerado foi enviado para o email enviado"');
-
-            $response = array(
-                'status'=>'success',
-                'msg'=>'Código gerado com sucesso! "O código gerado foi enviado para o email enviado'
-            );
-            return Response::json($response);
-
-           //return redirect()->route('gerar-codigo.index')->with('message', 'Código gerado com sucesso! "O código gerado foi enviado para o email enviado"');
-        }
-           // return redirect()->back()->with->with('message', 'Erro ao gerar código');
-
+        return redirect()->back()->with('message', 'Código gerado com sucesso! "O código gerado foi enviado para o email enviado"');
 
     }
-    public function gerarCod(Request $request)
-    {
-            $post = $request->all();
 
-            $this->gerCodigo->email = $post['email'];
-            $this->gerCodigo->user_id = $post['user_id'];
-            $this->gerCodigo->codigo = str_random(15);
-            $this->gerCodigo->save();
 
-            return redirect()->back()->with('message', 'Código gerado com sucesso! "O código gerado foi enviado para o email enviado"');
+    public function findAll(){
+        $data = DB::table('prov_cods')
+            ->join('users', 'users.id', '=', 'prov_cods.user_id')
+            ->select('prov_cods.*', 'users.name as user')
+            ->orderByRaw('prov_cods.id DESC')
+            ->get();
 
-           /* $response = array(
-                'status'=>'success',
-                'msg'=>'Código gerado com sucesso! "O código gerado foi enviado para o email enviado'
-            );
-            return Response::json($response);
-            */
-    }
+        return Response::json($data);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }
