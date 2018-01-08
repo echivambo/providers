@@ -155,7 +155,7 @@
                         <ul class="nav nav-tabs" role="tablist">
 
                             @if(Session::has('message'))
-                                <div class="alert alert-danger">{{ Session::get('message') }}</div>
+                                <div class="alert alert-danger text-center">{{ Session::get('message') }}</div>
                             @endif
 
                             <li role="presentation" class="active">
