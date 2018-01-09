@@ -227,8 +227,11 @@
                                         <div class="col-md-8">
                                             <label>Ramo de Actividade</label>
                                             <select name="ramo_atividade" id="ramo_atividade" class="form-control form-control-line" >
-                                                <option value=""></option>
-                                                <option value="limpeza">Limpeza</option>
+                                                <option>Selecione o ramo</option>
+                                                @foreach($ramos as $rm)
+                                                    <option value="{{$rm->ramo}}">{{$rm->ramo}}</option>
+                                                @endforeach
+
                                             </select>
                                         </div>
                                     </div>
@@ -246,27 +249,16 @@
                                 <div class="col-md-offset-2 col-md-8">
 
                                     <div class="form-group">
-                                        <div class="col-md-8">
-                                            <label>Endereço Físico da Empresa</label>
-                                            <input type="text" class="form-control form-control-line" name="endereco_fisico" id="endereco_fisico" >
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label>Número</label>
-                                            <input type="number" class="form-control form-control-line" name="end_numero" id="numero" >
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
                                         <div class="col-md-6">
-                                            <label>Bairro</label>
-                                            <input type="text" class="form-control form-control-line" name="bairro" > </div>
-                                        <div class="col-md-6">
-                                            <label>Cidade</label>
-                                            <input type="text" class="form-control form-control-line" name="cidade" >
+                                            <label>País</label>
+                                            <select name="pais" id="pais" class="form-control form-control-line" >
+                                                <option value="">Selecione o País</option>
+                                                @foreach($paises as $rm)
+                                                    <option value="{{$rm->name}}">{{$rm->name}}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
-                                    </div>
 
-                                    <div class="form-group">
                                         <div class="col-md-6">
                                             <label>Província</label>
                                             <select name="provincia" id="provincia" class="form-control form-control-line" >
@@ -274,12 +266,31 @@
                                                 <option value="Maputo">Maputo</option>
                                             </select>
                                         </div>
+                                    </div>
+
+                                    <div class="form-group">
                                         <div class="col-md-6">
-                                            <label>País</label>
-                                            <select name="pais" id="pais" class="form-control form-control-line" >
-                                                <option value="">Selecione o País</option>
-                                                <option value="Moz">Moz</option>
+                                            <label>Cidade</label>
+                                            <select name="cidade" id="cidade" class="form-control form-control-line" >
+                                                <option value="">Selecione a cidade</option>
+                                                @foreach($paises as $rm)
+                                                    <option value="{{$rm->name}}">{{$rm->name}}</option>
+                                                @endforeach
                                             </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label>Bairro</label>
+                                            <input type="text" class="form-control form-control-line" name="bairro" > </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-md-8">
+                                            <label>Endereço Físico da Empresa</label>
+                                            <input type="text" class="form-control form-control-line" name="endereco_fisico" id="endereco_fisico" >
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>Número</label>
+                                            <input type="number" class="form-control form-control-line" name="end_numero" id="numero" >
                                         </div>
                                     </div>
 
@@ -364,6 +375,50 @@
             </section>
         </div>
     </div>
+
+    <script>
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-Token':'{{ csrf_token() }}',
+            }
+        });
+
+        $('#pais').change(function () {
+                var pais = $('#pais').val();
+                $.ajax({
+                    type:"GET",
+                    url: '{{url('/get/provincia')}}',
+                    data: {pais: pais},
+                    success: function (data) {
+                        var html = '<option value="">Selecione a Província</option>';
+                        for(var i = 0; i < data.length; i++){
+                            html += '<option value="'+ data[i].name +'">'+data[i].name+'</option>';
+                        }
+                        $('#provincia').html(html).show();
+                        console.log(data);
+
+                    }
+                })
+        });
+
+        $('#provincia').change(function () {
+                var prov = $('#provincia').val();
+                $.ajax({
+                    type:"GET",
+                    url: '{{url('/get/cidade')}}',
+                    data: {prov: prov},
+                    success: function (data) {
+                        var html = '<option value="">Selecione a cidade</option>';
+                        for(var i = 0; i < data.length; i++){
+                            html += '<option value="'+ data[i].name +'">'+data[i].name+'</option>';
+                        }
+                        $('#cidade').html(html).show();
+                        console.log(data);
+
+                    }
+                })
+        });
+    </script>
 
     <script>
         $('input').click(function () {

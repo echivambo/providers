@@ -26,6 +26,8 @@ class ConfController extends Controller
      */
     public function store(Request $request)
     {
+
+
         $result = (int)DB::table('prov_cods')
             ->where('codigo', $request->codigo)
             ->where('status', '1')

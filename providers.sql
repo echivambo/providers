@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.3
+-- version 4.7.0
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Jan 09, 2018 at 12:13 PM
--- Server version: 10.1.30-MariaDB
--- PHP Version: 5.6.30
+-- Host: 127.0.0.1
+-- Generation Time: 09-Jan-2018 às 19:18
+-- Versão do servidor: 10.1.25-MariaDB
+-- PHP Version: 7.1.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,193 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `evidevic_providers`
+-- Database: `providers`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `migrations`
+-- Estrutura da tabela `districts_of_mozambique`
+--
+
+CREATE TABLE `districts_of_mozambique` (
+  `id` int(11) NOT NULL,
+  `district` varchar(50) DEFAULT NULL,
+  `provice_of_mozambique_id` int(11) NOT NULL,
+  `province` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `districts_of_mozambique`
+--
+
+INSERT INTO `districts_of_mozambique` (`id`, `district`, `provice_of_mozambique_id`, `province`) VALUES
+(101, 'Kalhamanculo ', 1, 'Maputo Cidade '),
+(102, 'Kamavota ', 1, 'Maputo Cidade '),
+(103, 'Kamaxakene ', 1, 'Maputo Cidade '),
+(104, 'Kampfumo ', 1, 'Maputo Cidade '),
+(105, 'Kamubukwana ', 1, 'Maputo Cidade '),
+(106, 'Kanyaka ', 1, 'Maputo Cidade '),
+(107, 'Katembe ', 1, 'Maputo Cidade '),
+(108, 'Nlhamankulu ', 1, 'Maputo Cidade '),
+(201, 'Boane ', 2, 'Maputo '),
+(202, 'Cidade Matola ', 2, 'Maputo '),
+(203, 'Magude ', 2, 'Maputo '),
+(204, 'Manhica ', 2, 'Maputo '),
+(205, 'Marracuene ', 2, 'Maputo '),
+(206, 'Matola ', 2, 'Maputo '),
+(207, 'Matutuine ', 2, 'Maputo '),
+(208, 'Moamba ', 2, 'Maputo '),
+(209, 'Namaacha ', 2, 'Maputo '),
+(301, 'Bilene ', 3, 'Gaza '),
+(302, 'Chibuto ', 3, 'Gaza '),
+(303, 'Chicualacuala ', 3, 'Gaza '),
+(304, 'Chigubo ', 3, 'Gaza '),
+(305, 'Chokwe ', 3, 'Gaza '),
+(306, 'Cidade de xai-xai ', 3, 'Gaza '),
+(307, 'Distrito de xai-xai ', 3, 'Gaza '),
+(308, 'Guija ', 3, 'Gaza '),
+(309, 'Mabalane ', 3, 'Gaza '),
+(310, 'Macia ', 3, 'Gaza '),
+(311, 'Manjacaze ', 3, 'Gaza '),
+(312, 'Massangena ', 3, 'Gaza '),
+(313, 'Massingir ', 3, 'Gaza '),
+(401, 'Cidade de inhambane ', 4, 'Inhambane '),
+(402, 'Funhalouro ', 4, 'Inhambane '),
+(403, 'Govuro ', 4, 'Inhambane '),
+(404, 'Homoine ', 4, 'Inhambane '),
+(405, 'Inharrime ', 4, 'Inhambane '),
+(406, 'Inhassoro ', 4, 'Inhambane '),
+(407, 'Jangamo ', 4, 'Inhambane '),
+(408, 'Mabote ', 4, 'Inhambane '),
+(409, 'Massinga ', 4, 'Inhambane '),
+(410, 'Maxixe ', 4, 'Inhambane '),
+(411, 'Morrumbene ', 4, 'Inhambane '),
+(412, 'Panda ', 4, 'Inhambane '),
+(413, 'Vilankulos ', 4, 'Inhambane '),
+(414, 'Zavala ', 4, 'Inhambane '),
+(501, 'Buzi ', 5, 'Sofala '),
+(502, 'Caia ', 5, 'Sofala '),
+(503, 'Chemba ', 5, 'Sofala '),
+(504, 'Cheringoma ', 5, 'Sofala '),
+(505, 'Chibabava ', 5, 'Sofala '),
+(506, 'Cidade da beira ', 5, 'Sofala '),
+(507, 'Dondo ', 5, 'Sofala '),
+(508, 'Gorongosa ', 5, 'Sofala '),
+(509, 'Machanga ', 5, 'Sofala '),
+(510, 'Maringue ', 5, 'Sofala '),
+(511, 'Marromeu ', 5, 'Sofala '),
+(512, 'Muanza ', 5, 'Sofala '),
+(513, 'Nhamatanda ', 5, 'Sofala '),
+(601, 'Alto Molocue ', 6, 'Zambezia '),
+(602, 'Chinde ', 6, 'Zambezia '),
+(603, 'Cidade de quelimane ', 6, 'Zambezia '),
+(604, 'Derre ', 6, 'Zambezia '),
+(605, 'Gile ', 6, 'Zambezia '),
+(606, 'Gurue ', 6, 'Zambezia '),
+(607, 'Ile ', 6, 'Zambezia '),
+(608, 'Inhassunge ', 6, 'Zambezia '),
+(609, 'Luabo ', 6, 'Zambezia '),
+(610, 'Lugela ', 6, 'Zambezia '),
+(611, 'Maganja da costa ', 6, 'Zambezia '),
+(612, 'Milange ', 6, 'Zambezia '),
+(613, 'Mocuba ', 6, 'Zambezia '),
+(614, 'Mocubela ', 6, 'Zambezia '),
+(615, 'Mopeia ', 6, 'Zambezia '),
+(616, 'Morrumbala ', 6, 'Zambezia '),
+(617, 'Namacurra ', 6, 'Zambezia '),
+(618, 'Namarroi ', 6, 'Zambezia '),
+(619, 'Nicoadala ', 6, 'Zambezia '),
+(620, 'Pebane ', 6, 'Zambezia '),
+(621, 'Quelimane ', 6, 'Zambezia '),
+(701, 'Angoche ', 7, 'Nampula '),
+(702, 'Cidade de nampula ', 7, 'Nampula '),
+(703, 'Distrito de nampula ', 7, 'Nampula '),
+(704, 'Erati ', 7, 'Nampula '),
+(705, 'Ilha de Mocambique ', 7, 'Nampula '),
+(706, 'Lalaua ', 7, 'Nampula '),
+(707, 'Larde ', 7, 'Nampula '),
+(708, 'Liupo ', 7, 'Nampula '),
+(709, 'Malema ', 7, 'Nampula '),
+(710, 'Meconta ', 7, 'Nampula '),
+(711, 'Mecuburi ', 7, 'Nampula '),
+(712, 'Memba ', 7, 'Nampula '),
+(713, 'Mogincual ', 7, 'Nampula '),
+(714, 'Mogovolas ', 7, 'Nampula '),
+(715, 'Moma ', 7, 'Nampula '),
+(716, 'Monapo ', 7, 'Nampula '),
+(717, 'Mossuril ', 7, 'Nampula '),
+(718, 'Muecate ', 7, 'Nampula '),
+(719, 'Murrupula ', 7, 'Nampula '),
+(720, 'Nacala-a-velha ', 7, 'Nampula '),
+(721, 'Nacala-porto ', 7, 'Nampula '),
+(722, 'Nacaroa ', 7, 'Nampula '),
+(723, 'Rapale ', 7, 'Nampula '),
+(724, 'Ribaue ', 7, 'Nampula '),
+(801, 'Cidade de lichinga ', 8, 'Niassa '),
+(802, 'Cuamba ', 8, 'Niassa '),
+(803, 'Distrito de lichinga ', 8, 'Niassa '),
+(804, 'Lago ', 8, 'Niassa '),
+(805, 'Majune ', 8, 'Niassa '),
+(806, 'Mandimba ', 8, 'Niassa '),
+(807, 'Marrupa ', 8, 'Niassa '),
+(808, 'Maua ', 8, 'Niassa '),
+(809, 'Mavago ', 8, 'Niassa '),
+(810, 'Mecanhelas ', 8, 'Niassa '),
+(811, 'Mecula ', 8, 'Niassa '),
+(812, 'Metarica ', 8, 'Niassa '),
+(813, 'Muembe ', 8, 'Niassa '),
+(814, 'Ngauma ', 8, 'Niassa '),
+(815, 'Nipepe ', 8, 'Niassa '),
+(816, 'Sanga ', 8, 'Niassa '),
+(901, 'Ancuabe ', 9, 'Cabo Delgado '),
+(902, 'Balama ', 9, 'Cabo Delgado '),
+(903, 'Chiure ', 9, 'Cabo Delgado '),
+(904, 'Cidade de pemba ', 9, 'Cabo Delgado '),
+(905, 'Ibo ', 9, 'Cabo Delgado '),
+(906, 'Macomia ', 9, 'Cabo Delgado '),
+(907, 'Mecufi ', 9, 'Cabo Delgado '),
+(908, 'Meluco ', 9, 'Cabo Delgado '),
+(909, 'Metuge ', 9, 'Cabo Delgado '),
+(910, 'Mocimboa da praia ', 9, 'Cabo Delgado '),
+(911, 'Montepuez ', 9, 'Cabo Delgado '),
+(912, 'Mueda ', 9, 'Cabo Delgado '),
+(913, 'Muidumbe ', 9, 'Cabo Delgado '),
+(914, 'Namuno ', 9, 'Cabo Delgado '),
+(915, 'Nangade ', 9, 'Cabo Delgado '),
+(916, 'Palma ', 9, 'Cabo Delgado '),
+(917, 'Quissanga ', 9, 'Cabo Delgado '),
+(1001, 'Angonia ', 10, 'Tete '),
+(1002, 'Cahora bassa ', 10, 'Tete '),
+(1003, 'Changara ', 10, 'Tete '),
+(1004, 'Chifunde ', 10, 'Tete '),
+(1005, 'Chiuta ', 10, 'Tete '),
+(1006, 'Cidade de tete ', 10, 'Tete '),
+(1007, 'Doa ', 10, 'Tete '),
+(1008, 'Dsc tete ', 10, 'Tete '),
+(1009, 'Macanga ', 10, 'Tete '),
+(1010, 'Magoe ', 10, 'Tete '),
+(1011, 'Marara ', 10, 'Tete '),
+(1012, 'Maravia ', 10, 'Tete '),
+(1013, 'Moatize ', 10, 'Tete '),
+(1014, 'Mutarara ', 10, 'Tete '),
+(1015, 'Tsangano ', 10, 'Tete '),
+(1016, 'Zumbo ', 10, 'Tete '),
+(1101, 'Barue ', 11, 'Manica '),
+(1102, 'Cidade de chimoio ', 11, 'Manica '),
+(1103, 'Gondola ', 11, 'Manica '),
+(1104, 'Guro ', 11, 'Manica '),
+(1105, 'Machaze ', 11, 'Manica '),
+(1106, 'Macossa ', 11, 'Manica '),
+(1107, 'Manica ', 11, 'Manica '),
+(1108, 'Mossurize ', 11, 'Manica '),
+(1109, 'Sussundenga ', 11, 'Manica '),
+(1110, 'Tambara ', 11, 'Manica ');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `migrations`
 --
 
 CREATE TABLE `migrations` (
@@ -35,7 +215,7 @@ CREATE TABLE `migrations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `migrations`
+-- Extraindo dados da tabela `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
@@ -48,7 +228,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `password_resets`
+-- Estrutura da tabela `password_resets`
 --
 
 CREATE TABLE `password_resets` (
@@ -60,7 +240,7 @@ CREATE TABLE `password_resets` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `providers`
+-- Estrutura da tabela `providers`
 --
 
 CREATE TABLE `providers` (
@@ -91,7 +271,7 @@ CREATE TABLE `providers` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `providers`
+-- Extraindo dados da tabela `providers`
 --
 
 INSERT INTO `providers` (`id`, `nome_empresa`, `pessoa_contacto`, `alvara`, `nuit`, `pais`, `provincia`, `cidade`, `bairro`, `endereco_fisico`, `end_numero`, `ramo_atividade`, `telefone_fixo`, `fax`, `celular`, `email`, `nome_banco`, `numero_conta`, `nib`, `nome_agencia`, `bancaria`, `status`, `created_at`, `updated_at`) VALUES
@@ -112,10 +292,11 @@ INSERT INTO `providers` (`id`, `nome_empresa`, `pessoa_contacto`, `alvara`, `nui
 (21, '545', '4444', 'uploads/29-10-2017.png', 54544, 'Moz', 'Maputo', '444', '4444', '1444', '4444', 'limpeza', '44444', '44444', '44444', '4444@s44', '4444', '44444', 4444, '444', 'uploads/29-10-2017.png', 1, '2018-01-08 14:19:59', '2018-01-08 14:19:59'),
 (23, '5451', '44441', 'uploads/29-10-2017.png', 545441, 'Moz', 'Maputo', '1', '44441', '14441', '44441', 'limpeza', '444441', '444441', '444441', '4444@s441', '4444', '444441', 44441, '444', 'uploads/29-10-2017.png', 1, '2018-01-08 14:22:25', '2018-01-08 14:22:25'),
 (24, '447', '44', 'uploads/29-10-2017.png', 47, 'Moz', 'Maputo', '86486', '84864', '48', '8648', 'limpeza', '45', '454', '456', '456@sd', '545', '54', 45, '545', 'uploads/29-10-2017.png', 1, '2018-01-08 17:08:36', '2018-01-08 17:08:36'),
-(26, '4471', '55555', 'uploads/29-10-2017.png', 15555, 'Moz', 'Maputo', '555555', '5555555', '55555', '5555', 'limpeza', '5555555', '555555', '555555', '456@sd444', '545', '545555', 555555, '55555', 'uploads/29-10-2017.png', 1, '2018-01-08 17:10:22', '2018-01-08 17:10:22');
+(26, '4471', '55555', 'uploads/29-10-2017.png', 15555, 'Moz', 'Maputo', '555555', '5555555', '55555', '5555', 'limpeza', '5555555', '555555', '555555', '456@sd444', '545', '545555', 555555, '55555', 'uploads/29-10-2017.png', 1, '2018-01-08 17:10:22', '2018-01-08 17:10:22'),
+(27, '88888', '5555', 'uploads/Capture.PNG', 5555, 'Moz', 'Maputo', '8888', '8888', '888', '8888', 'limpeza', '888888', '88888', '88888', 'echivambo@psi.org.mz', '8888', '8888', 8888, '8888', 'uploads/Capture.PNG', 1, '2018-01-09 06:33:48', '2018-01-09 06:33:48');
 
 --
--- Triggers `providers`
+-- Acionadores `providers`
 --
 DELIMITER $$
 CREATE TRIGGER `desabilitar_condigo` AFTER INSERT ON `providers` FOR EACH ROW BEGIN
@@ -129,7 +310,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `prov_cods`
+-- Estrutura da tabela `prov_cods`
 --
 
 CREATE TABLE `prov_cods` (
@@ -143,13 +324,12 @@ CREATE TABLE `prov_cods` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `prov_cods`
+-- Extraindo dados da tabela `prov_cods`
 --
 
 INSERT INTO `prov_cods` (`id`, `codigo`, `email`, `status`, `user_id`, `created_at`, `updated_at`) VALUES
-(1, 'CVhT6y9RfJ0Pbib', 'hh@fd.org.mz', 1, 1, '2017-12-28 09:19:42', '2017-12-28 09:19:42'),
 (2, 'Iit2XkwDz2Fbijx', 'amjd.jjd@ndn.com', 0, 1, '2017-12-28 09:20:01', '2017-12-28 09:20:01'),
-(3, 'IOhmvAfF2yy2E63', 'echivambo@psi.org.mz', 1, 1, '2018-01-05 10:22:12', '2018-01-05 10:22:12'),
+(3, 'IOhmvAfF2yy2E63', 'echivambo@psi.org.mz', 0, 1, '2018-01-05 10:22:12', '2018-01-05 10:22:12'),
 (4, 'opbGGWuCsg0eo21', 'echiambo@psi.org.mz', 1, 1, '2018-01-07 05:28:54', '2018-01-07 05:28:54'),
 (5, 'ntFu8sGiRrQkUy1', 'edson.cbo@outlook.com', 1, 1, '2018-01-07 05:31:28', '2018-01-07 05:31:28'),
 (6, 'eBSyasozCDnf3fq', 'ech@psi.org.mz', 1, 1, '2018-01-07 05:32:19', '2018-01-07 05:32:19'),
@@ -167,12 +347,14 @@ INSERT INTO `prov_cods` (`id`, `codigo`, `email`, `status`, `user_id`, `created_
 (18, 'tDIdMuvDXD5bFSK', 'aaaaaaaaa@psi.org.mz', 1, 1, '2018-01-07 05:55:23', '2018-01-07 05:55:23'),
 (19, '608vdTIGJnSEszY', 'edson@look.com', 1, 1, '2018-01-07 06:48:41', '2018-01-07 06:48:41'),
 (20, 'OOkPain9Qe4p2B4', 'xxx@xc.co', 1, 1, '2018-01-08 13:23:28', '2018-01-08 13:23:28'),
-(21, 'sihcq6Wi3SZiC2E', 'cccc@c', 1, 1, '2018-01-08 13:24:12', '2018-01-08 13:24:12');
+(21, 'sihcq6Wi3SZiC2E', 'cccc@c', 1, 1, '2018-01-08 13:24:12', '2018-01-08 13:24:12'),
+(22, 'KzVeY2kCGKdiURV', 'eds5ambo@outlook.com', 1, 1, '2018-01-09 08:03:52', '2018-01-09 08:03:52'),
+(23, 'GGMhvEgsoLQBoXV', 'mmmm@ds', 1, 1, '2018-01-09 15:38:05', '2018-01-09 15:38:05');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ramos`
+-- Estrutura da tabela `ramos`
 --
 
 CREATE TABLE `ramos` (
@@ -185,17 +367,18 @@ CREATE TABLE `ramos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `ramos`
+-- Extraindo dados da tabela `ramos`
 --
 
 INSERT INTO `ramos` (`id`, `ramo`, `status`, `user_id`, `created_at`, `updated_at`) VALUES
-(1, 'Eletrecidade', 1, 2, '2017-12-27 18:20:40', '2017-12-27 18:20:40'),
-(2, 'Ac', 1, 5, '2017-12-27 18:39:29', '2017-12-27 18:39:29');
+(1, 'Eletrecidade', 1, 2, '2017-12-27 16:20:40', '2017-12-27 16:20:40'),
+(2, 'Ac', 1, 5, '2017-12-27 16:39:29', '2017-12-27 16:39:29'),
+(3, 'uuu', 1, 1, '2018-01-09 15:46:50', '2018-01-09 15:46:50');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Estrutura da tabela `users`
 --
 
 CREATE TABLE `users` (
@@ -211,7 +394,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `users`
+-- Extraindo dados da tabela `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `grupo`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
@@ -225,6 +408,12 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `grupo`, `status`, `reme
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `districts_of_mozambique`
+--
+ALTER TABLE `districts_of_mozambique`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `migrations`
@@ -276,6 +465,11 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `districts_of_mozambique`
+--
+ALTER TABLE `districts_of_mozambique`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1111;
+--
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
@@ -284,17 +478,17 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `providers`
 --
 ALTER TABLE `providers`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 --
 -- AUTO_INCREMENT for table `prov_cods`
 --
 ALTER TABLE `prov_cods`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 --
 -- AUTO_INCREMENT for table `ramos`
 --
 ALTER TABLE `ramos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `users`
 --

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Provider;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use DB;
 use Illuminate\Support\Facades\Storage;
 
 class ProvidersController extends Controller
@@ -32,7 +32,10 @@ class ProvidersController extends Controller
      */
     public function create()
     {
-        return view('createProviders');
+        $ramos = DB::table('ramos')->where('status', 1)->get();
+        $paises = DB::table('countries')->get();
+
+        return view('createProviders', compact('ramos'), compact('paises'));
     }
 
     /**

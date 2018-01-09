@@ -25,6 +25,7 @@ class GerarCodController extends Controller
         $controle = DB::table('prov_cods')
             ->join('users', 'users.id', '=', 'prov_cods.user_id')
             ->select('prov_cods.*', 'users.name as user')
+            ->where('prov_cods.status', 1)
             ->orderByRaw('prov_cods.id DESC')
             ->get();
 
@@ -55,7 +56,7 @@ class GerarCodController extends Controller
         $this->gerCodigo->codigo = str_random(15);
         $this->gerCodigo->save();
 
-        return redirect()->back()->with('message', 'Código gerado com sucesso! "O código gerado foi enviado para o email enviado"');
+        return redirect()->back()->with('message', 'Código gerado com sucesso! ');
 
     }
 

@@ -46,6 +46,9 @@ Route::group(['middleware' => ['auth']], function () {
             return Response::json($data);
         }
     });
+
+
+
 });
     Route::post('provider/sava',   ['uses'=>'ProvidersController@store']);
     Route::resource('/providers', 'ProvidersController');
@@ -53,4 +56,32 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/print-provider', 'printProviderController@index')->name('print-provider');
 
+    //Preencher a tabela gerar código
+    Route::get('/get/provincia', function (){
+        $pais = DB::table('countries')
+            ->select(DB::raw('id'))
+            ->where('name', $_GET['pais'])
+            ->get();
 
+        if(Request::ajax()){
+            $data = DB::table('states')
+                ->where('country_id', $pais[0]->id)->get();
+
+            return Response::json($data);
+        }
+    });
+
+    //Preencher a tabela gerar código
+    Route::get('/get/cidade', function (){
+        $cidade = DB::table('states')
+            ->select(DB::raw('id'))
+            ->where('name', $_GET['prov'])
+            ->get();
+
+        if(Request::ajax()){
+            $data = DB::table('cities')
+                ->where('state_id', $cidade[0]->id)->get();
+
+            return Response::json($data);
+        }
+    });

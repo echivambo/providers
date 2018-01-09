@@ -6,11 +6,11 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="box-title titulo text-center">GERAR CÓDIGO DE CADASTRO</h3>
-
+                @include('admin.mensagens.msg')
                 <div class="alert alert-success hidden text-center"></div>
 
                  <div class="panel-body">
-                     <form class="subscribe_form"  method="post" onsubmit="return false">
+                     <form class="subscribe_form"  method="post" action="{{route('gerar-codigo.store')}}">
                      {{ csrf_field() }}
 
                          <!--User ID-->
@@ -45,7 +45,18 @@
                                             <th>Usuário</th>
                                         </tr>
                                         </thead>
-                                        <tbody id="tbody"></tbody>
+                                        <tbody>
+                                        @foreach($controle as $cli)
+                                            <tr>
+                                                <td>{{$cli->id}}</td>
+                                                <td>{{$cli->email}}</td>
+                                                <td>{{$cli->codigo}}</td>
+                                                <td>{{$cli->created_at}}</td>
+                                                <td>{{$cli->user}}</td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+
                                     </table>
                                 </div>
                             </div>
@@ -53,82 +64,6 @@
                     </div>
                     <!-- /.row -->
 
-    <script>
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-Token':'{{ csrf_token() }}',
-            }
-        });
-        $(document).ready(function () {
-            filltable();
-        });
-
-        $('#gerar').click(function (e) {
-            e.preventDefault();
-            var email = $('#email').val();
-            var user_id = $('#user_id').val();
-            var token = $('input[name=_token]').val();
-            var data = {
-                email:email,
-                user_id:user_id,
-                token:token
-            };
-
-            var request = $.ajax({
-               url: "/gerar-codigo/validacao",
-                type: "POST",
-                data: data,
-                dataType: "html",
-                headers: {
-                    'X-CSRF-Token':'{{ csrf_token() }}',
-                },
-            });
-
-            request.done(function (msg) {
-                $('.alert').removeClass('hidden');
-                $('.alert').html('Código gerado com sucesso');
-                filltable();
-                $('#email').val('');
-                var response = JSON.parse(msg);
-                console.log(response.msg);
-
-            });
-
-            request.fail(function (jqXHR, textStatus) {
-                console.log("Erro ao gerar cogido" + textStatus);
-            })
-        });
-
-        $('#email').click(function () {
-            $('.alert').addClass('hidden');
-        });
-
-
-
-        function filltable() {
-
-            $.ajax({
-                type:"GET",
-                url: '{{url('/gerar-codigo/get/all')}}',
-               success: function (data) {
-                   console.log(data);
-                   var html = '';
-                   for(var i = 0; i < data.length; i++){
-                       html += '<tr>'+
-                           '<td>' + data[i].id + '</td>' +
-                           '<td>' + data[i].email + '</td>' +
-                           '<td>' + data[i].codigo + '</td>' +
-                           '<td>' + data[i].created_at + '</td>' +
-                           '<td>' + data[i].user + '</td>' +
-                           '</tr>';
-                   }
-                   $('#tbody').html(html).show();
-
-               }
-            })
-
-        }
-    </script>
     <script>
         $(document).ready(function() {
             $('#example').DataTable( {
