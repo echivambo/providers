@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.0
+-- version 4.7.3
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: 08-Jan-2018 às 20:58
--- Versão do servidor: 10.1.25-MariaDB
--- PHP Version: 7.1.7
+-- Host: localhost:3306
+-- Generation Time: Jan 09, 2018 at 12:13 PM
+-- Server version: 10.1.30-MariaDB
+-- PHP Version: 5.6.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `providers`
+-- Database: `evidevic_providers`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `migrations`
+-- Table structure for table `migrations`
 --
 
 CREATE TABLE `migrations` (
@@ -35,7 +35,7 @@ CREATE TABLE `migrations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Extraindo dados da tabela `migrations`
+-- Dumping data for table `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
@@ -48,7 +48,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `password_resets`
+-- Table structure for table `password_resets`
 --
 
 CREATE TABLE `password_resets` (
@@ -60,7 +60,7 @@ CREATE TABLE `password_resets` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `providers`
+-- Table structure for table `providers`
 --
 
 CREATE TABLE `providers` (
@@ -91,7 +91,7 @@ CREATE TABLE `providers` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Extraindo dados da tabela `providers`
+-- Dumping data for table `providers`
 --
 
 INSERT INTO `providers` (`id`, `nome_empresa`, `pessoa_contacto`, `alvara`, `nuit`, `pais`, `provincia`, `cidade`, `bairro`, `endereco_fisico`, `end_numero`, `ramo_atividade`, `telefone_fixo`, `fax`, `celular`, `email`, `nome_banco`, `numero_conta`, `nib`, `nome_agencia`, `bancaria`, `status`, `created_at`, `updated_at`) VALUES
@@ -115,7 +115,7 @@ INSERT INTO `providers` (`id`, `nome_empresa`, `pessoa_contacto`, `alvara`, `nui
 (26, '4471', '55555', 'uploads/29-10-2017.png', 15555, 'Moz', 'Maputo', '555555', '5555555', '55555', '5555', 'limpeza', '5555555', '555555', '555555', '456@sd444', '545', '545555', 555555, '55555', 'uploads/29-10-2017.png', 1, '2018-01-08 17:10:22', '2018-01-08 17:10:22');
 
 --
--- Acionadores `providers`
+-- Triggers `providers`
 --
 DELIMITER $$
 CREATE TRIGGER `desabilitar_condigo` AFTER INSERT ON `providers` FOR EACH ROW BEGIN
@@ -129,7 +129,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `prov_cods`
+-- Table structure for table `prov_cods`
 --
 
 CREATE TABLE `prov_cods` (
@@ -143,7 +143,7 @@ CREATE TABLE `prov_cods` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Extraindo dados da tabela `prov_cods`
+-- Dumping data for table `prov_cods`
 --
 
 INSERT INTO `prov_cods` (`id`, `codigo`, `email`, `status`, `user_id`, `created_at`, `updated_at`) VALUES
@@ -172,20 +172,30 @@ INSERT INTO `prov_cods` (`id`, `codigo`, `email`, `status`, `user_id`, `created_
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `ramo_actividades`
+-- Table structure for table `ramos`
 --
 
-CREATE TABLE `ramo_actividades` (
+CREATE TABLE `ramos` (
   `id` int(10) UNSIGNED NOT NULL,
-  `nome` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ramo` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT '1',
+  `user_id` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `ramos`
+--
+
+INSERT INTO `ramos` (`id`, `ramo`, `status`, `user_id`, `created_at`, `updated_at`) VALUES
+(1, 'Eletrecidade', 1, 2, '2017-12-27 18:20:40', '2017-12-27 18:20:40'),
+(2, 'Ac', 1, 5, '2017-12-27 18:39:29', '2017-12-27 18:39:29');
+
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -201,7 +211,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Extraindo dados da tabela `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `grupo`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
@@ -249,11 +259,10 @@ ALTER TABLE `prov_cods`
   ADD UNIQUE KEY `prov_cods_email_unique` (`email`);
 
 --
--- Indexes for table `ramo_actividades`
+-- Indexes for table `ramos`
 --
-ALTER TABLE `ramo_actividades`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `ramo_actividades_nome_unique` (`nome`);
+ALTER TABLE `ramos`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `users`
@@ -282,10 +291,10 @@ ALTER TABLE `providers`
 ALTER TABLE `prov_cods`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
--- AUTO_INCREMENT for table `ramo_actividades`
+-- AUTO_INCREMENT for table `ramos`
 --
-ALTER TABLE `ramo_actividades`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `ramos`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `users`
 --
