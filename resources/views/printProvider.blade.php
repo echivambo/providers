@@ -113,22 +113,22 @@
                                     <div class="linha">
                                         <div class="col-md-7">
                                             <span class="sub-heading">Nome da Empresa / Pessoa Singulars</span>
-                                            <span class="subtopic_description">{{$prov->nome_empresa}}</span>
+                                            <span class="subtopic_description">{{isset($prov->nome_empresa)?$prov->nome_empresa:''}}</span>
                                         </div>
                                         <div class="col-md-5">
                                             <span class="sub-heading">NUIT</span>
-                                            <span class="subtopic_description">{{$prov->nuit }}</span>
+                                            <span class="subtopic_description">{{isset($prov->nuit)?$prov->nuit:''}}</span>
                                         </div>
                                     </div>
 
                                     <div class="linha">
                                         <div class="col-md-7">
                                             <span class="sub-heading">Pessoa do Contacto</span>
-                                            <span class="subtopic_description">{{$prov->pessoa_contacto }}</span>
+                                            <span class="subtopic_description">{{isset($prov->pessoa_contacto)?$prov->pessoa_contacto:''}}</span>
                                         </div>
                                         <div class="col-md-5">
                                             <span class="sub-heading">Ramo de Actividade</span>
-                                            <span class="subtopic_description">{{$prov->ramo_atividade }}</span>
+                                            <span class="subtopic_description">{{isset($prov->ramo_atividade)?$prov->ramo_atividade:''}}</span>
                                         </div>
                                     </div>
                                 </a>
@@ -139,56 +139,56 @@
                                     <div class="linha">
                                         <div class="col-md-7">
                                             <span class="sub-heading">Endereço Físico da Empresa</span>
-                                            <span class="subtopic_description">{{$prov->endereco_fisico }}</span>
+                                            <span class="subtopic_description">{{isset($prov->endereco_fisico)?$prov->endereco_fisico:''}}</span>
                                         </div>
                                         <div class="col-md-5">
                                             <span class="sub-heading">Número</span>
-                                            <span class="subtopic_description">{{$prov->end_umero }}</span>
+                                            <span class="subtopic_description">{{isset($prov->end_umero)?$prov->end_umero:''}}</span>
                                         </div>
                                     </div>
 
                                     <div class="linha">
                                         <div class="col-md-7">
                                             <span class="sub-heading">País</span>
-                                            <span class="subtopic_description">{{$prov->pais }}</span>
+                                            <span class="subtopic_description">{{isset($prov->pais)?$prov->pais:''}}</span>
                                         </div>
                                         <div class="col-md-5">
                                             <span class="sub-heading">Província</span>
-                                            <span class="subtopic_description">{{$prov->provincia }}</span>
+                                            <span class="subtopic_description">{{isset($prov->provincia)?$prov->provincia:''}}</span>
                                         </div>
                                     </div>
 
                                     <div class="linha">
                                         <div class="col-md-7">
                                             <span class="sub-heading">Cidade</span>
-                                            <span class="subtopic_description">{{$prov->cidade }}</span>
+                                            <span class="subtopic_description">{{isset($prov->cidade)?$prov->cidade:''}}</span>
                                         </div>
                                         <div class="col-md-5">
                                             <span class="sub-heading">Bairro</span>
-                                            <span class="subtopic_description">{{$prov->bairro }}</span>
+                                            <span class="subtopic_description">{{isset($prov->bairro)?$prov->bairro:''}}</span>
                                         </div>
                                     </div>
 
                                     <div class="linha">
                                         <div class="col-md-7">
                                             <span class="sub-heading">Telefone Fixo</span>
-                                            <span class="subtopic_description">{{$prov->telefone_fixo }}</span>
+                                            <span class="subtopic_description">{{isset($prov->telefone_fixo)?$prov->telefone_fixo:''}}</span>
                                         </div>
                                         <div class="col-md-5">
                                             <span class="sub-heading">Fax</span>
-                                            <span class="subtopic_description">{{$prov->fax }}</span>
+                                            <span class="subtopic_description">{{isset($prov->fax)?$prov->fax:''}}</span>
                                         </div>
                                     </div>
 
                                     <div>
                                         <div class="col-md-7">
                                             <span class="sub-heading">Celular</span>
-                                            <span class="subtopic_description">{{$prov->celular }}</span>
+                                            <span class="subtopic_description">{{isset($prov->celular)?$prov->celular:''}}</span>
                                         </div>
                                         <div class="linha">
                                             <div class="col-md-5">
                                                 <span class="sub-heading">Email</span>
-                                                <span class="subtopic_description">{{$prov->email }}</span>
+                                                <span class="subtopic_description">{{isset($prov->email)?$prov->email:''}}</span>
                                             </div>
                                         </div>
                                     </div>
@@ -200,21 +200,21 @@
                                     <div class="linha">
                                         <div class="col-md-7">
                                             <span class="sub-heading">Nome do Banco</span>
-                                            <span class="subtopic_description">{{$prov->nome_banco }}</span>
+                                            <span class="subtopic_description">{{isset($prov->nome_banco)?$prov->nome_banco:''}}</span>
                                         </div>
                                         <div class="col-md-5">
                                             <span class="sub-heading">Número da Conta</span>
-                                            <span class="subtopic_description">{{$prov->numero_conta }}</span>
+                                            <span class="subtopic_description">{{isset($prov->numero_conta)?$prov->numero_conta:''}}</span>
                                         </div>
                                     </div>
                                     <div class="linha">
                                         <div class="col-md-7">
                                             <span class="sub-heading">NIB</span>
-                                            <span class="subtopic_description">{{$prov->nib }}</span>
+                                            <span class="subtopic_description">{{isset($prov->nib)?$prov->nib:''}}</span>
                                         </div>
                                         <div class="col-md-5">
                                             <span class="sub-heading">Nome da Agência</span>
-                                            <span class="subtopic_description">{{$prov->nome_agencia }}</span>
+                                            <span class="subtopic_description">{{isset($prov->nome_agencia)?$prov->nome_agencia:''}}</span>
                                         </div>
                                     </div>
                                 </a>
@@ -233,9 +233,9 @@
     </style>
 
         <div class="row" id="sideBar">
-            <h5><a href="#">Baixar</a></h5>
-            <h5><a href="{{$prov->alvara }}" target="_blank">Alvara</a></h5>
-            <h5><a href="{{$prov->bancaria }}" target="_blank">Bancária</a></h5>
+            <h5><a href="{{route('print-provider')}}">Baixar</a></h5>
+            <h5><a href="{{isset($prov->alvara)?$prov->alvara:''}}" target="_blank">Alvara</a></h5>
+            <h5><a href="{{isset($prov->bancaria)?$prov->bancaria:''}}" target="_blank">Bancária</a></h5>
         </div>
 
     <script>

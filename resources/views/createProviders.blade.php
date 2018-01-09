@@ -366,6 +366,10 @@
     </div>
 
     <script>
+        $('input').click(function () {
+            $('.alert').addClass('hidden');
+        });
+
         /*
         $('#gravar').click(function (e) {
             e.preventDefault();

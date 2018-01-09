@@ -18,7 +18,7 @@
 
                          <div class="form-group">
                              <div class="col-md-offset-4 col-md-4">
-                                 <input type="email" placeholder="johnathan@admin.com" class="form-control form-control-line text-center" name="email" id="email">
+                                 <input type="email" placeholder="johnathan@admin.com" class="form-control form-control-line text-center" name="email" id="email" required>
                              </div>
                              <div class="col-sm-12">
                                  <button class="btn btn-success center-block" id="gerar">Gerar Código</button>

@@ -43,7 +43,8 @@ class ProvidersController extends Controller
      */
     public function store(Request $request)
     {
-        $valido = DB::table('prov_cods')->where('email', $request->email)->first();
+        $valido = DB::table('prov_cods')->where('email', $request->email)->value('status');
+
         if($valido) {
             $this->provider->nome_empresa = $request->nome_empresa;
             $this->provider->pessoa_contacto = $request->pessoa_contacto;
