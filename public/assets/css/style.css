@@ -246,6 +246,10 @@ footer {
     color: #fff;
     text-align: center;
     background-color: #f57f17;
+    position:relative;
+    bottom:0;
+    left: 0;
+    right: 0;
 }
 .footer a
 {
