@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RamoRequest;
 use App\Ramo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -42,8 +43,9 @@ class ramoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RamoRequest $request)
     {
+
         Ramo::create($request->all());
         return redirect()->route('ramo.index')->with('message', 'Ramo salvo com sucesso!');
     }

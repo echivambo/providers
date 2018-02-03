@@ -6,6 +6,7 @@
             <div class="panel-heading">
                 <h3 class="box-title titulo text-center">Registro de Ramos de Atividade</h3>
                 @include('admin.mensagens.msg')
+
                 <div class="panel-body">
                     <form class="subscribe_form"  method="post" action="{{route('ramo.store')}}">
                     {{ csrf_field() }}
@@ -15,7 +16,7 @@
 
                         <div class="form-group">
                             <div class="col-md-offset-4 col-md-4">
-                                <input type="text" placeholder="ramo" class="form-control form-control-line text-center" name="ramo" id="ramo">
+                                <input type="text" placeholder="ramo" class="form-control form-control-line text-center" name="ramo" id="ramo" required>
                             </div>
                             <div class="col-sm-12">
                                 <button class="btn btn-success center-block" id="gerar">Gravar</button>

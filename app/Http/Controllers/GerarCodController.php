@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\GerarCodigoRequest;
+use App\Mail\CodProvMail;
 use App\Models\ProvCod;
+use App\GerarCod;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class GerarCodController extends Controller
 {
@@ -37,8 +41,9 @@ class GerarCodController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(array $data)
     {
+
     }
 
     /**
@@ -47,7 +52,7 @@ class GerarCodController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(GerarCodigoRequest $request)
     {
         $post = $request->all();
 
@@ -55,8 +60,13 @@ class GerarCodController extends Controller
         $this->gerCodigo->user_id = $post['user_id'];
         $this->gerCodigo->codigo = str_random(15);
         $this->gerCodigo->save();
+        $posts=$this->gerCodigo;
 
-        return redirect()->back()->with('message', 'Código gerado com sucesso! ');
+
+        Mail::to($posts['email'])->send(new CodProvMail($posts));
+
+        return redirect()->back()->with('message', 'Código gerado & Email enviado com sucesso! ');
+
 
     }
 

@@ -155,8 +155,20 @@
                         <ul class="nav nav-tabs" role="tablist">
 
                             @if(Session::has('message'))
-                                <div class="alert alert-danger text-center">{{ Session::get('message') }}</div>
+                                <div class="alert alert-danger text-center">{{ Session::get('message') }} </div>
                             @endif
+                                @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <strong>Whoops!</strong> Encotramos alguns problemas na sua submisão.
+
+                                        <br/>
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
 
                             <li role="presentation" class="active">
                                 <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Dados Pessoais">
@@ -202,37 +214,55 @@
 
                                     <div class="form-group">
                                         <div class="col-md-8">
+                                            <div {{ $errors->has('nome_empresa') ? 'has-error' : '' }}">
                                             <label>Nome da Empresa / Pessoa Singulars</label>
-                                            <input type="text" class="form-control form-control-line" id="nome_empresa" name="nome_empresa" >
+                                            <input type="text" class="form-control form-control-line" id="nome_empresa" name="nome_empresa"  value="{{ old('nome_empresa') }}" >
+                                                <span class="text-danger">{{ $errors->first('nome_empresa') }}</span>
+                                            </div>
                                         </div>
+
+
+
                                         <div class="col-md-4">
+                                            <div {{ $errors->has('alvara') ? 'has-error' : '' }}">
                                             <label>Anexar Alvará</label>
-                                            <input type="file" class="form-control form-control-line" id="alvara" name="alvara" >
+                                            <input type="file" class="form-control form-control-line" id="alvara" name="alvara" value="{{old('alvara')}}" >
+                                            <span class="text-danger">{{ $errors->first('alvara') }}</span>
+                                            </div>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <div class="col-md-8">
+                                            <div {{ $errors->has('nuit') ? 'has-error' : '' }}">
                                             <label for="nuit">NUIT</label>
-                                            <input type="number" class="form-control form-control-line" name="nuit" id="nuit" > </div>
+                                            <input type="number" class="form-control form-control-line" name="nuit" id="nuit" value="{{old('nuit')}}"> </div>
+                                            <span class="text-danger">{{ $errors->first('nuit') }}</span>
+                                            </div>
                                     </div>
 
                                     <div class="form-group">
                                         <div class="col-md-8">
+                                            <div {{ $errors->has('pessoa_contacto') ? 'has-error' : '' }}">
                                             <label for="pessoa_contacto">Pessoa do Contacto</label>
-                                            <input type="text" class="form-control form-control-line" name="pessoa_contacto" id="pessoa_contacto" > </div>
+                                            <input type="text" class="form-control form-control-line" name="pessoa_contacto" id="pessoa_contacto" value="{{old('pessoa_contacto')}}"> </div>
+                                            <span class="text-danger">{{ $errors->first('pessoa_contacto') }}</span>
+                                            </div>
                                     </div>
 
                                     <div class="form-group">
                                         <div class="col-md-8">
+                                            <div {{ $errors->has('ramo_atividade') ? 'has-error' : '' }}">
                                             <label>Ramo de Actividade</label>
                                             <select name="ramo_atividade" id="ramo_atividade" class="form-control form-control-line" >
-                                                <option>Selecione o ramo</option>
+                                                <option></option>
                                                 @foreach($ramos as $rm)
                                                     <option value="{{$rm->ramo}}">{{$rm->ramo}}</option>
                                                 @endforeach
 
                                             </select>
+                                            <span class="text-danger">{{ $errors->first('ramo_atividade') }}</span>
+                                            </div>
                                         </div>
                                     </div>
 
@@ -250,6 +280,7 @@
 
                                     <div class="form-group">
                                         <div class="col-md-6">
+                                            <div {{ $errors->has('pais') ? 'has-error' : '' }}">
                                             <label>País</label>
                                             <select name="pais" id="pais" class="form-control form-control-line" >
                                                 <option value="">Selecione o País</option>
@@ -257,19 +288,25 @@
                                                     <option value="{{$rm->name}}">{{$rm->name}}</option>
                                                 @endforeach
                                             </select>
+                                            <span class="text-danger">{{ $errors->first('pais') }}</span>
+                                        </div>
                                         </div>
 
                                         <div class="col-md-6">
+                                            <div {{ $errors->has('provincia') ? 'has-error' : '' }}">
                                             <label>Província</label>
                                             <select name="provincia" id="provincia" class="form-control form-control-line" >
                                                 <option value="">Selecione a Província</option>
                                                 <option value="Maputo">Maputo</option>
                                             </select>
+                                            <span class="text-danger">{{ $errors->first('provincia') }}</span>
+                                        </div>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <div class="col-md-6">
+                                            <div {{ $errors->has('cidade') ? 'has-error' : '' }}">
                                             <label>Cidade</label>
                                             <select name="cidade" id="cidade" class="form-control form-control-line" >
                                                 <option value="">Selecione a cidade</option>
@@ -277,42 +314,65 @@
                                                     <option value="{{$rm->name}}">{{$rm->name}}</option>
                                                 @endforeach
                                             </select>
+                                            <span class="text-danger">{{ $errors->first('cidade') }}</span>
+                                        </div>
                                         </div>
                                         <div class="col-md-6">
+                                            <div {{ $errors->has('bairro') ? 'has-error' : '' }}">
                                             <label>Bairro</label>
-                                            <input type="text" class="form-control form-control-line" name="bairro" > </div>
+                                            <input type="text" class="form-control form-control-line" name="bairro" value="{{old('bairro')}}"> </div>
+                                            <span class="text-danger">{{ $errors->first('bairro') }}</span>
+                                            </div>
                                     </div>
 
                                     <div class="form-group">
                                         <div class="col-md-8">
+                                            <div {{ $errors->has('endereco_fisico') ? 'has-error' : '' }}">
                                             <label>Endereço Físico da Empresa</label>
-                                            <input type="text" class="form-control form-control-line" name="endereco_fisico" id="endereco_fisico" >
+                                            <input type="text" class="form-control form-control-line" name="endereco_fisico" id="endereco_fisico" value="{{old('endereco_fisico')}}" >
+                                            <span class="text-danger">{{ $errors->first('endereco_fisico') }}</span>
+                                        </div>
                                         </div>
                                         <div class="col-md-4">
+                                            <div {{ $errors->has('endereco_fisico') ? 'has-error' : '' }}">
                                             <label>Número</label>
-                                            <input type="number" class="form-control form-control-line" name="end_numero" id="numero" >
+                                            <input type="number" class="form-control form-control-line" name="end_numero" id="numero" value="{{old('numero')}}" >
+                                            <span class="text-danger">{{ $errors->first('end_numero') }}</span>
+                                        </div>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <div class="col-md-6">
+                                            <div {{ $errors->has('telefone_fixo') ? 'has-error' : '' }}">
                                             <label>Telefone Fixo</label>
-                                            <input type="number" class="form-control form-control-line" name="telefone_fixo" >
+                                            <input type="number" class="form-control form-control-line" name="telefone_fixo" value="{{old('telefone_fixo')}}">
+                                            <span class="text-danger">{{ $errors->first('telefone_fixo') }}</span>
+                                        </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <label>Faxa</label>
-                                            <input type="number" class="form-control form-control-line" name="fax" >
+                                            <div {{ $errors->has('fax') ? 'has-error' : '' }}">
+                                            <label>Fax</label>
+                                            <input type="number" class="form-control form-control-line" name="fax" value="{{old('fax')}}" >
+                                            <span class="text-danger">{{ $errors->first('fax') }}</span>
+                                        </div>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <div class="col-md-4">
+                                            <div {{ $errors->has('celular') ? 'has-error' : '' }}">
                                             <label>Celular</label>
-                                            <input type="number" class="form-control form-control-line" name="celular" >
+                                            <input type="number" class="form-control form-control-line" name="celular" value="{{old('celular')}}">
+                                            <span class="text-danger">{{ $errors->first('celular') }}</span>
+                                        </div>
                                         </div>
                                         <div class="col-md-8">
+                                            <div {{ $errors->has('email') ? 'has-error' : '' }}">
                                             <label>Email</label>
-                                            <input type="email" class="form-control form-control-line" name="email" >
+                                            <input type="email" class="form-control form-control-line" name="email" value="{{old('email')}}" >
+                                            <span class="text-danger">{{ $errors->first('email') }}</span>
+                                        </div>
                                         </div>
                                     </div>
 
@@ -331,28 +391,44 @@
                                 <div class="col-md-offset-2 col-md-8">
                                     <div class="form-group">
                                         <div class="col-md-6">
+                                            <div {{ $errors->has('nome_banco') ? 'has-error' : '' }}">
                                             <label>Nome do Banco</label>
-                                            <input type="text" class="form-control form-control-line" name="nome_banco" > </div>
+                                            <input type="text" class="form-control form-control-line" name="nome_banco" value="{{old('nome_banco')}}" > </div>
+                                            <span class="text-danger">{{ $errors->first('nome_banco') }}</span>
+                                        </div>
                                         <div class="col-md-6">
+                                            <div {{ $errors->has('numero_conta') ? 'has-error' : '' }}">
                                             <label>Número da Conta</label>
-                                            <input type="number" class="form-control form-control-line" name="numero_conta" >
+                                            <input type="number" class="form-control form-control-line" name="numero_conta" value="{{old('numero_conta')}}">
+                                            <span class="text-danger">{{ $errors->first('numero_conta') }}</span>
+                                        </div>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <div class="col-md-4">
+                                            <div {{ $errors->has('nib') ? 'has-error' : '' }}">
                                             <label>NIB</label>
-                                            <input type="number" class="form-control form-control-line" name="nib" > </div>
+                                            <input type="number" class="form-control form-control-line" name="nib" value="{{old('nib')}}">
+                                            <span class="text-danger">{{ $errors->first('nib') }}</span>
+                                        </div>
+                                        </div>
                                         <div class="col-md-8">
+                                            <div {{ $errors->has('nome_agencia') ? 'has-error' : '' }}">
                                             <label>Nome da Agência</label>
                                             <input type="text" class="form-control form-control-line" name="nome_agencia" >
+                                            <span class="text-danger">{{ $errors->first('nome_agencia') }}</span>
+                                        </div>
                                         </div>
                                     </div>
 
                                     <div class="form-group">
                                         <div class="col-md-12">
+                                            <div {{ $errors->has('bancaria') ? 'has-error' : '' }}">
                                             <label>Bancária (Anexar documento assinado do banco)</label>
-                                            <input type="file" class="form-control form-control-line" name="bancaria" required>
+                                            <input type="file" class="form-control form-control-line" name="bancaria"  value="{{old('bancaria')}}">
+                                            <span class="text-danger">{{ $errors->first('bancaria') }}</span>
+                                        </div>
                                         </div>
                                     </div>
 
@@ -520,6 +596,7 @@
 
             $(".next-step").click(function (e) {
 
+
                 var $active = $('.wizard .nav-tabs li.active');
                 $active.next().removeClass('disabled');
                 nextTab($active);
@@ -541,5 +618,9 @@
         }
 
     </script>
+
+
+
+
 
 @endsection()

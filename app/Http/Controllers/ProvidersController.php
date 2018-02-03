@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProviderRequest;
 use App\Models\Provider;
 use Illuminate\Http\Request;
 use DB;
 use Illuminate\Support\Facades\Storage;
+
 
 class ProvidersController extends Controller
 {
@@ -44,8 +46,9 @@ class ProvidersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProviderRequest $request)
     {
+
         $valido = DB::table('prov_cods')->where('email', $request->email)->value('status');
 
         if($valido) {
