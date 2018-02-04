@@ -30,6 +30,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/changePassword','HomeController@showChangePasswordForm');
     Route::post('/changePassword','HomeController@changePassword')->name('changePassword');
 
+
     Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
     Route::post('gerar-codigo/validacao',   ['uses'=>'GerarCodController@store']);
@@ -53,6 +54,7 @@ Route::group(['middleware' => ['auth']], function () {
 });
     Route::post('provider/sava',   ['uses'=>'ProvidersController@store']);
     Route::resource('/providers', 'ProvidersController');
+    Route::get('/validator', 'ProvidersController@validates');
     Route::resource('/mail', 'MailController');
 
     Route::get('/print-provider', 'printProviderController@index')->name('print-provider');

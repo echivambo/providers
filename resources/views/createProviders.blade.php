@@ -2,6 +2,9 @@
 @extends('layouts.pag')
 @section('content')
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+
     <style>
         .wizard {
             margin: 20px auto;
@@ -147,6 +150,7 @@
 
 
     <div class="container">
+
         <div class="row">
             <section>
                 <div class="wizard">
@@ -154,12 +158,14 @@
                         <div class="connecting-line"></div>
                         <ul class="nav nav-tabs" role="tablist">
 
+
                             @if(Session::has('message'))
                                 <div class="alert alert-danger text-center">{{ Session::get('message') }} </div>
                             @endif
                                 @if ($errors->any())
                                     <div class="alert alert-danger">
                                         <strong>Whoops!</strong> Encotramos alguns problemas na sua submisão.
+
 
                                         <br/>
                                         <ul>
@@ -169,6 +175,7 @@
                                         </ul>
                                     </div>
                                 @endif
+
 
                             <li role="presentation" class="active">
                                 <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Dados Pessoais">
@@ -204,7 +211,7 @@
                     </div>
 
                     <form class="form-horizontal form-material contactForm container" enctype="multipart/form-data" method="post" action="{{route('providers.store')}}">
-
+                        <div class="alert alert-danger print-error-msg" style="display:none"></div>
                         {{ csrf_field() }}
                         <div class="tab-content">
                             <div class="tab-pane active" role="tabpanel" id="step1">
@@ -215,6 +222,7 @@
                                     <div class="form-group">
                                         <div class="col-md-8">
                                             <div {{ $errors->has('nome_empresa') ? 'has-error' : '' }}">
+                                            <ul></ul>
                                             <label>Nome da Empresa / Pessoa Singulars</label>
                                             <input type="text" class="form-control form-control-line" id="nome_empresa" name="nome_empresa"  value="{{ old('nome_empresa') }}" >
                                                 <span class="text-danger">{{ $errors->first('nome_empresa') }}</span>
@@ -597,9 +605,10 @@
             $(".next-step").click(function (e) {
 
 
-                var $active = $('.wizard .nav-tabs li.active');
+               /* var $active = $('.wizard .nav-tabs li.active');
                 $active.next().removeClass('disabled');
                 nextTab($active);
+                */
 
             });
             $(".prev-step").click(function (e) {
@@ -620,6 +629,55 @@
     </script>
 
 
+    <script type="text/javascript">
+
+
+        $(document).ready(function() {
+            $(".next-step").click(function(e){
+                e.preventDefault();
+
+
+
+                var nome_empresa = $("input[name='nome_empresa']").val();
+
+
+                $.ajax({
+                    url: "/validator",
+                    type:'get',
+                    dataType: 'json',
+                    data: { nome_empresa:nome_empresa,},
+                    success: function(data) {
+                        console.log(data);
+                       //alert(data.message);
+                    },
+                    error: function(data){
+                        var errors = '';
+                        for(datos in data.responseJSON){
+                            errors += data.responseJSON[datos] + '<br>';
+                        }
+                        //$('#response').show().html(errors); //this is my div with messages
+                        alert(errors)
+                        console.log(errors);
+
+                        // Render the errors with js ...
+                    }
+                });
+
+
+            });
+
+
+            function printErrorMsg (msg) {
+                $(".print-error-msg").find("ul").html('');
+                $(".print-error-msg").css('display','block');
+                $.each( msg, function( key, value ) {
+                    $(".print-error-msg").find("ul").append('<li>'+value+'</li>');
+                });
+            }
+        });
+
+
+    </script>
 
 
 
