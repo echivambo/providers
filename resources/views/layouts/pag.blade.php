@@ -18,6 +18,7 @@
 
     <script src="{{ asset('js/jquery-3.2.0.min.js') }}"></script>
 
+
 </head>
 
 <body>

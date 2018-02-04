@@ -143,7 +143,7 @@
                                         </div>
                                         <div class="col-md-5">
                                             <span class="sub-heading">Número</span>
-                                            <span class="subtopic_description">{{isset($prov->end_umero)?$prov->end_umero:''}}</span>
+                                            <span class="subtopic_description">{{isset($prov->end_numero)?$prov->end_numero:''}}</span>
                                         </div>
                                     </div>
 

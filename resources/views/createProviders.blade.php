@@ -155,7 +155,19 @@
                         <ul class="nav nav-tabs" role="tablist">
 
                             @if(Session::has('message'))
-                                <div class="alert alert-danger text-center">{{ Session::get('message') }}</div>
+                                <div class="alert alert-danger text-center">{{ Session::get('message') }} </div>
+                            @endif
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <strong>Whoops!</strong> Encotramos alguns problemas na sua submisão.
+
+                                    <br/>
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
                             @endif
 
                             <li role="presentation" class="active">
@@ -202,178 +214,242 @@
 
                                     <div class="form-group">
                                         <div class="col-md-8">
+                                            <div {{ $errors->has('nome_empresa') ? 'has-error' : '' }}">
                                             <label>Nome da Empresa / Pessoa Singulars</label>
-                                            <input type="text" class="form-control form-control-line" id="nome_empresa" name="nome_empresa" >
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label>Anexar Alvará</label>
-                                            <input type="file" class="form-control form-control-line" id="alvara" name="alvara" >
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <div class="col-md-8">
-                                            <label for="nuit">NUIT</label>
-                                            <input type="number" class="form-control form-control-line" name="nuit" id="nuit" > </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <div class="col-md-8">
-                                            <label for="pessoa_contacto">Pessoa do Contacto</label>
-                                            <input type="text" class="form-control form-control-line" name="pessoa_contacto" id="pessoa_contacto" > </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <div class="col-md-8">
-                                            <label>Ramo de Actividade</label>
-                                            <select name="ramo_atividade" id="ramo_atividade" class="form-control form-control-line" >
-                                                <option>Selecione o ramo</option>
-                                                @foreach($ramos as $rm)
-                                                    <option value="{{$rm->ramo}}">{{$rm->ramo}}</option>
-                                                @endforeach
-
-                                            </select>
+                                            <input type="text" class="form-control form-control-line" id="nome_empresa" name="nome_empresa"  value="{{ old('nome_empresa') }}" >
+                                            <span class="text-danger">{{ $errors->first('nome_empresa') }}</span>
                                         </div>
                                     </div>
 
 
-                                        <ul class="list-inline pull-right">
-                                            <li><button type="button" class="btn btn-primary next-step">Próximo</button></li>
-                                        </ul>
+
+                                    <div class="col-md-4">
+                                        <div {{ $errors->has('alvara') ? 'has-error' : '' }}">
+                                        <label>Anexar Alvará</label>
+                                        <input type="file" class="form-control form-control-line" id="alvara" name="alvara" value="{{old('alvara')}}" >
+                                        <span class="text-danger">{{ $errors->first('alvara') }}</span>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="tab-pane" role="tabpanel" id="step2">
-                                <h2 class="text-center">Endereço / Contacto</h2>
-                                <hr>
 
-                                <div class="col-md-offset-2 col-md-8">
-
-                                    <div class="form-group">
-                                        <div class="col-md-6">
-                                            <label>País</label>
-                                            <select name="pais" id="pais" class="form-control form-control-line" >
-                                                <option value="">Selecione o País</option>
-                                                @foreach($paises as $rm)
-                                                    <option value="{{$rm->name}}">{{$rm->name}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-
-                                        <div class="col-md-6">
-                                            <label>Província</label>
-                                            <select name="provincia" id="provincia" class="form-control form-control-line" >
-                                                <option value="">Selecione a Província</option>
-                                                <option value="Maputo">Maputo</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <div class="col-md-6">
-                                            <label>Cidade</label>
-                                            <select name="cidade" id="cidade" class="form-control form-control-line" >
-                                                <option value="">Selecione a cidade</option>
-                                                @foreach($paises as $rm)
-                                                    <option value="{{$rm->name}}">{{$rm->name}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label>Bairro</label>
-                                            <input type="text" class="form-control form-control-line" name="bairro" > </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <div class="col-md-8">
-                                            <label>Endereço Físico da Empresa</label>
-                                            <input type="text" class="form-control form-control-line" name="endereco_fisico" id="endereco_fisico" >
-                                        </div>
-                                        <div class="col-md-4">
-                                            <label>Número</label>
-                                            <input type="number" class="form-control form-control-line" name="end_numero" id="numero" >
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <div class="col-md-6">
-                                            <label>Telefone Fixo</label>
-                                            <input type="number" class="form-control form-control-line" name="telefone_fixo" >
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label>Faxa</label>
-                                            <input type="number" class="form-control form-control-line" name="fax" >
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <div class="col-md-4">
-                                            <label>Celular</label>
-                                            <input type="number" class="form-control form-control-line" name="celular" >
-                                        </div>
-                                        <div class="col-md-8">
-                                            <label>Email</label>
-                                            <input type="email" class="form-control form-control-line" name="email" >
-                                        </div>
-                                    </div>
-
-
-                                <ul class="list-inline pull-right">
-                                    <li><button type="button" class="btn btn-default prev-step">Voltar</button></li>
-                                    <li><button type="button" class="btn btn-primary next-step">Próximo</button></li>
-                                </ul>
-
-                                </div>
+                            <div class="form-group">
+                                <div class="col-md-8">
+                                    <div {{ $errors->has('nuit') ? 'has-error' : '' }}">
+                                    <label for="nuit">NUIT</label>
+                                    <input type="number" class="form-control form-control-line" name="nuit" id="nuit" value="{{old('nuit')}}"> </div>
+                                <span class="text-danger">{{ $errors->first('nuit') }}</span>
                             </div>
-                            <div class="tab-pane" role="tabpanel" id="step3">
-                                <h2 class="text-center">Dados Bancários</h2>
-                                <hr>
-
-                                <div class="col-md-offset-2 col-md-8">
-                                    <div class="form-group">
-                                        <div class="col-md-6">
-                                            <label>Nome do Banco</label>
-                                            <input type="text" class="form-control form-control-line" name="nome_banco" > </div>
-                                        <div class="col-md-6">
-                                            <label>Número da Conta</label>
-                                            <input type="number" class="form-control form-control-line" name="numero_conta" >
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <div class="col-md-4">
-                                            <label>NIB</label>
-                                            <input type="number" class="form-control form-control-line" name="nib" > </div>
-                                        <div class="col-md-8">
-                                            <label>Nome da Agência</label>
-                                            <input type="text" class="form-control form-control-line" name="nome_agencia" >
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <div class="col-md-12">
-                                            <label>Bancária (Anexar documento assinado do banco)</label>
-                                            <input type="file" class="form-control form-control-line" name="bancaria" required>
-                                        </div>
-                                    </div>
-
-
-                                <ul class="list-inline pull-right">
-                                    <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
-                                    <li><input id="gravar" type="submit" value="Gravar" class="btn btn-primary btn-info-full"></li>
-                                </ul>
-
-                                </div>
-                            </div>
-                            <div class="tab-pane" role="tabpanel" id="complete">
-                                <h3>Complete</h3>
-                                <p>You have successfully completed all steps.</p>
-                            </div>
-                            <div class="clearfix"></div>
                         </div>
-                    </form>
+
+                        <div class="form-group">
+                            <div class="col-md-8">
+                                <div {{ $errors->has('pessoa_contacto') ? 'has-error' : '' }}">
+                                <label for="pessoa_contacto">Pessoa do Contacto</label>
+                                <input type="text" class="form-control form-control-line" name="pessoa_contacto" id="pessoa_contacto" value="{{old('pessoa_contacto')}}"> </div>
+                            <span class="text-danger">{{ $errors->first('pessoa_contacto') }}</span>
+                        </div>
                 </div>
-            </section>
+
+                <div class="form-group">
+                    <div class="col-md-8">
+                        <div {{ $errors->has('ramo_atividade') ? 'has-error' : '' }}">
+                        <label>Ramo de Actividade</label>
+                        <select name="ramo_atividade" id="ramo_atividade" class="form-control form-control-line" >
+                            <option></option>
+                            @foreach($ramos as $rm)
+                                <option value="{{$rm->ramo}}">{{$rm->ramo}}</option>
+                            @endforeach
+
+                        </select>
+                        <span class="text-danger">{{ $errors->first('ramo_atividade') }}</span>
+                    </div>
+                </div>
         </div>
+
+
+        <ul class="list-inline pull-right">
+            <li><button type="button" class="btn btn-primary next-step">Próximo</button></li>
+        </ul>
+    </div>
+    </div>
+    <div class="tab-pane" role="tabpanel" id="step2">
+        <h2 class="text-center">Endereço / Contacto</h2>
+        <hr>
+
+        <div class="col-md-offset-2 col-md-8">
+
+            <div class="form-group">
+                <div class="col-md-6">
+                    <div {{ $errors->has('pais') ? 'has-error' : '' }}">
+                    <label>País</label>
+                    <select name="pais" id="pais" class="form-control form-control-line" >
+                        <option value="">Selecione o País</option>
+                        @foreach($paises as $rm)
+                            <option value="{{$rm->name}}">{{$rm->name}}</option>
+                        @endforeach
+                    </select>
+                    <span class="text-danger">{{ $errors->first('pais') }}</span>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div {{ $errors->has('provincia') ? 'has-error' : '' }}">
+                <label>Província</label>
+                <select name="provincia" id="provincia" class="form-control form-control-line" >
+                    <option value="">Selecione a Província</option>
+                    <option value="Maputo">Maputo</option>
+                </select>
+                <span class="text-danger">{{ $errors->first('provincia') }}</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-6">
+            <div {{ $errors->has('cidade') ? 'has-error' : '' }}">
+            <label>Cidade</label>
+            <select name="cidade" id="cidade" class="form-control form-control-line" >
+                <option value="">Selecione a cidade</option>
+                @foreach($paises as $rm)
+                    <option value="{{$rm->name}}">{{$rm->name}}</option>
+                @endforeach
+            </select>
+            <span class="text-danger">{{ $errors->first('cidade') }}</span>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div {{ $errors->has('bairro') ? 'has-error' : '' }}">
+        <label>Bairro</label>
+        <input type="text" class="form-control form-control-line" name="bairro" value="{{old('bairro')}}"> </div>
+    <span class="text-danger">{{ $errors->first('bairro') }}</span>
+    </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-8">
+            <div {{ $errors->has('endereco_fisico') ? 'has-error' : '' }}">
+            <label>Endereço Físico da Empresa</label>
+            <input type="text" class="form-control form-control-line" name="endereco_fisico" id="endereco_fisico" value="{{old('endereco_fisico')}}" >
+            <span class="text-danger">{{ $errors->first('endereco_fisico') }}</span>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div {{ $errors->has('end_numero') ? 'has-error' : '' }}">
+        <label>Número</label>
+        <input type="number" class="form-control form-control-line" name="end_numero" id="numero" value="{{old('end_numero')}}" >
+        <span class="text-danger">{{ $errors->first('end_numero') }}</span>
+    </div>
+    </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-6">
+            <div {{ $errors->has('telefone_fixo') ? 'has-error' : '' }}">
+            <label>Telefone Fixo</label>
+            <input type="number" class="form-control form-control-line" name="telefone_fixo" value="{{old('telefone_fixo')}}">
+            <span class="text-danger">{{ $errors->first('telefone_fixo') }}</span>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div {{ $errors->has('fax') ? 'has-error' : '' }}">
+        <label>Fax</label>
+        <input type="number" class="form-control form-control-line" name="fax" value="{{old('fax')}}" >
+        <span class="text-danger">{{ $errors->first('fax') }}</span>
+    </div>
+    </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-4">
+            <div {{ $errors->has('celular') ? 'has-error' : '' }}">
+            <label>Celular</label>
+            <input type="number" class="form-control form-control-line" name="celular" value="{{old('celular')}}">
+            <span class="text-danger">{{ $errors->first('celular') }}</span>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div {{ $errors->has('email') ? 'has-error' : '' }}">
+        <label>Email</label>
+        <input type="email" class="form-control form-control-line" name="email" value="{{old('email')}}" >
+        <span class="text-danger">{{ $errors->first('email') }}</span>
+    </div>
+    </div>
+    </div>
+
+
+    <ul class="list-inline pull-right">
+        <li><button type="button" class="btn btn-default prev-step">Voltar</button></li>
+        <li><button type="button" class="btn btn-primary next-step">Próximo</button></li>
+    </ul>
+
+    </div>
+    </div>
+    <div class="tab-pane" role="tabpanel" id="step3">
+        <h2 class="text-center">Dados Bancários</h2>
+        <hr>
+
+        <div class="col-md-offset-2 col-md-8">
+            <div class="form-group">
+                <div class="col-md-6">
+                    <div {{ $errors->has('nome_banco') ? 'has-error' : '' }}">
+                    <label>Nome do Banco</label>
+                    <input type="text" class="form-control form-control-line" name="nome_banco" value="{{old('nome_banco')}}" > </div>
+                <span class="text-danger">{{ $errors->first('nome_banco') }}</span>
+            </div>
+            <div class="col-md-6">
+                <div {{ $errors->has('numero_conta') ? 'has-error' : '' }}">
+                <label>Número da Conta</label>
+                <input type="number" class="form-control form-control-line" name="numero_conta" value="{{old('numero_conta')}}">
+                <span class="text-danger">{{ $errors->first('numero_conta') }}</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-4">
+            <div {{ $errors->has('nib') ? 'has-error' : '' }}">
+            <label>NIB</label>
+            <input type="number" class="form-control form-control-line" name="nib" value="{{old('nib')}}">
+            <span class="text-danger">{{ $errors->first('nib') }}</span>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div {{ $errors->has('nome_agencia') ? 'has-error' : '' }}">
+        <label>Nome da Agência</label>
+        <input type="text" class="form-control form-control-line" name="nome_agencia" value="{{old('nome_agencia')}}">
+        <span class="text-danger">{{ $errors->first('nome_agencia') }}</span>
+    </div>
+    </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-12">
+            <div {{ $errors->has('bancaria') ? 'has-error' : '' }}">
+            <label>Bancária (Anexar documento assinado do banco)</label>
+            <input type="file" class="form-control form-control-line" name="bancaria"  value="{{old('bancaria')}}">
+            <span class="text-danger">{{ $errors->first('bancaria') }}</span>
+        </div>
+    </div>
+    </div>
+
+
+    <ul class="list-inline pull-right">
+        <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
+        <li><input id="gravar" type="submit" value="Gravar" class="btn btn-primary btn-info-full"></li>
+    </ul>
+
+    </div>
+    </div>
+    <div class="tab-pane" role="tabpanel" id="complete">
+        <h3>Complete</h3>
+        <p>You have successfully completed all steps.</p>
+    </div>
+    <div class="clearfix"></div>
+    </div>
+    </form>
+    </div>
+    </section>
+    </div>
     </div>
 
     <script>
@@ -384,39 +460,39 @@
         });
 
         $('#pais').change(function () {
-                var pais = $('#pais').val();
-                $.ajax({
-                    type:"GET",
-                    url: '{{url('/get/provincia')}}',
-                    data: {pais: pais},
-                    success: function (data) {
-                        var html = '<option value="">Selecione a Província</option>';
-                        for(var i = 0; i < data.length; i++){
-                            html += '<option value="'+ data[i].name +'">'+data[i].name+'</option>';
-                        }
-                        $('#provincia').html(html).show();
-                        console.log(data);
-
+            var pais = $('#pais').val();
+            $.ajax({
+                type:"GET",
+                url: '{{url('/get/provincia')}}',
+                data: {pais: pais},
+                success: function (data) {
+                    var html = '<option value="">Selecione a Província</option>';
+                    for(var i = 0; i < data.length; i++){
+                        html += '<option value="'+ data[i].name +'">'+data[i].name+'</option>';
                     }
-                })
+                    $('#provincia').html(html).show();
+                    console.log(data);
+
+                }
+            })
         });
 
         $('#provincia').change(function () {
-                var prov = $('#provincia').val();
-                $.ajax({
-                    type:"GET",
-                    url: '{{url('/get/cidade')}}',
-                    data: {prov: prov},
-                    success: function (data) {
-                        var html = '<option value="">Selecione a cidade</option>';
-                        for(var i = 0; i < data.length; i++){
-                            html += '<option value="'+ data[i].name +'">'+data[i].name+'</option>';
-                        }
-                        $('#cidade').html(html).show();
-                        console.log(data);
-
+            var prov = $('#provincia').val();
+            $.ajax({
+                type:"GET",
+                url: '{{url('/get/cidade')}}',
+                data: {prov: prov},
+                success: function (data) {
+                    var html = '<option value="">Selecione a cidade</option>';
+                    for(var i = 0; i < data.length; i++){
+                        html += '<option value="'+ data[i].name +'">'+data[i].name+'</option>';
                     }
-                })
+                    $('#cidade').html(html).show();
+                    console.log(data);
+
+                }
+            })
         });
     </script>
 
@@ -426,80 +502,80 @@
         });
 
         /*
-        $('#gravar').click(function (e) {
-            e.preventDefault();
-            var  nome_empresa  = $('#nome_empresa').val();
-            var  pessoa_contacto  = $('#pessoa_contacto').val();
-            var  alvara  = $('#alvara').val();
-            var  nuit  = $('#nuit').val();
-            var  pais  = $('#pais').val();
-            var  provincia  = $('#provincia').val();
-            var  cidade  = $('#cidade').val();
-            var  bairro  = $('#bairro').val();
-            var  endereco_fisico  = $('#endereco_fisico').val();
-            var  end_numero  = $('#end_numero').val();
-            var  ramo_atividade  = $('#ramo_atividade').val();
-            var  telefone_fixo  = $('#telefone_fixo').val();
-            var  fax  = $('#fax').val();
-            var  celular  = $('#celular').val();
-            var  email  = $('#email').val();
-            var  nome_banco  = $('#nome_banco').val();
-            var  numero_conta  = $('#numero_conta').val();
-            var  nib  = $('#nib').val();
-            var  nome_agencia  = $('#nome_agencia').val();
-            var  bancaria  = $('#bancaria').val();
+         $('#gravar').click(function (e) {
+         e.preventDefault();
+         var  nome_empresa  = $('#nome_empresa').val();
+         var  pessoa_contacto  = $('#pessoa_contacto').val();
+         var  alvara  = $('#alvara').val();
+         var  nuit  = $('#nuit').val();
+         var  pais  = $('#pais').val();
+         var  provincia  = $('#provincia').val();
+         var  cidade  = $('#cidade').val();
+         var  bairro  = $('#bairro').val();
+         var  endereco_fisico  = $('#endereco_fisico').val();
+         var  end_numero  = $('#end_numero').val();
+         var  ramo_atividade  = $('#ramo_atividade').val();
+         var  telefone_fixo  = $('#telefone_fixo').val();
+         var  fax  = $('#fax').val();
+         var  celular  = $('#celular').val();
+         var  email  = $('#email').val();
+         var  nome_banco  = $('#nome_banco').val();
+         var  numero_conta  = $('#numero_conta').val();
+         var  nib  = $('#nib').val();
+         var  nome_agencia  = $('#nome_agencia').val();
+         var  bancaria  = $('#bancaria').val();
 
-            var data = {
-                nome_empresa:nome_empresa,
-                pessoa_contacto:pessoa_contacto,
-                alvara:alvara,
-                nuit:nuit,
-                pais:pais,
-                provincia:provincia,
-                cidade:cidade,
-                bairro:bairro,
-                endereco_fisico:endereco_fisico,
-                end_numero:end_numero,
-                ramo_atividade:ramo_atividade,
-                telefone_fixo:telefone_fixo,
-                fax:fax,
-                celular:celular,
-                email:email,
-                nome_banco:nome_banco,
-                numero_conta:numero_conta,
-                nib:nib,
-                nome_agencia:nome_agencia,
-                bancaria:bancaria,
-            };
+         var data = {
+         nome_empresa:nome_empresa,
+         pessoa_contacto:pessoa_contacto,
+         alvara:alvara,
+         nuit:nuit,
+         pais:pais,
+         provincia:provincia,
+         cidade:cidade,
+         bairro:bairro,
+         endereco_fisico:endereco_fisico,
+         end_numero:end_numero,
+         ramo_atividade:ramo_atividade,
+         telefone_fixo:telefone_fixo,
+         fax:fax,
+         celular:celular,
+         email:email,
+         nome_banco:nome_banco,
+         numero_conta:numero_conta,
+         nib:nib,
+         nome_agencia:nome_agencia,
+         bancaria:bancaria,
+         };
 
 
-            var request = $.ajax({
-                url: "/provider/sava",
-                type: "POST",
-                data: data,
-                dataType: "html",
-                headers: {
-                    'X-CSRF-Tok',
-                },
-            });
+         var request = $.ajax({
+         url: "/provider/sava",
+         type: "POST",
+         data: data,
+         dataType: "html",
+         headers: {
+         'X-CSRF-Tok',
+         },
+         });
 
-            request.done(function (msg) {
-                alert('Salvo');
+         request.done(function (msg) {
+         alert('Salvo');
 
-                /** Passa para Proxima etapa
-                var $active = $('.wizard .nav-tabs li.active');
-                $active.next().removeClass('disabled');
-                nextTab($active);
+         /** Passa para Proxima etapa
+         var $active = $('.wizard .nav-tabs li.active');
+         $active.next().removeClass('disabled');
+         nextTab($active);
 
-                var response = JSON.parse(msg);
-                console.log(response.msg);
+         var response = JSON.parse(msg);
+         console.log(response.msg);
 
-            });
+         });
 
-            request.fail(function (jqXHR, textStatus) {
-                console.log("Erro ao gerar cogido" + textStatus);
-            })
-        });
+         request.fail(function (jqXHR, textStatus) {
+         console.log("Erro ao gerar cogido" + textStatus);
+         })
+         });
          */
     </script>
 
@@ -519,6 +595,7 @@
             });
 
             $(".next-step").click(function (e) {
+
 
                 var $active = $('.wizard .nav-tabs li.active');
                 $active.next().removeClass('disabled');
@@ -541,5 +618,9 @@
         }
 
     </script>
+
+
+
+
 
 @endsection()

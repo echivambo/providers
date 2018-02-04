@@ -26,8 +26,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('/admin/gerar-codigo', 'GerarCodController');
     Route::get('/viewsProviders', 'viewsProviders@index')->name('viewsProviders');
     Route::resource('/ramo', 'ramoController');
-
     Route::resource('/users', 'UserController');
+    Route::get('/changePassword','HomeController@showChangePasswordForm');
+    Route::post('/changePassword','HomeController@changePassword')->name('changePassword');
 
     Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
