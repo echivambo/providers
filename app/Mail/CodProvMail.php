@@ -29,6 +29,6 @@ class CodProvMail extends Mailable
      */
     public function build()
     {
-        return $this->view('provMail');
+        return $this->view('emailviews.provMail');
     }
 }
